@@ -64,17 +64,17 @@ public class ModelEnvironment
 
     void MoveButton()
     {
-
+        buttonPositionOffset = numberGenerator.Next(-5, 5) * 10;
     }
 
     void RotateButton()
     {
-
+        buttonPositionOffset = numberGenerator.Next(0, 360);
     }
 	
     void GrowButton()
     {
-
+        buttonScale = (float) numberGenerator.NextDouble() * 3;
     }
 
     void ResetButton()
