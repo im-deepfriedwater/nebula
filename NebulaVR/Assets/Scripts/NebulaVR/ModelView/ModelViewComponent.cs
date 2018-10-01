@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RootBehaviour : MonoBehaviour {
+public class ModelViewComponent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

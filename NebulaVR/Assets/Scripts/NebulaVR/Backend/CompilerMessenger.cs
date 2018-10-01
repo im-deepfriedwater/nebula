@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NebulaEnvironmentBehaviour : MonoBehaviour {
+public class CompilerMessenger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
