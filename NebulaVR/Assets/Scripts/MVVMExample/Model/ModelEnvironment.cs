@@ -1,4 +1,7 @@
-﻿// This class is a "Model" of the 
+﻿using System;
+using UnityEngine;
+
+// This class is a "Model" of the 
 // environment. It keeps track
 // of what the right string value
 // is and also various aspects
@@ -12,12 +15,10 @@
 // telling the view how to
 // achieve this. 
 
-
-using System;
-
-public class ModelEnvironment
+ 
+public class ModelEnvironment : MonoBehaviour
 {
-    readonly Random numberGenerator = new Random();
+    readonly System.Random numberGenerator = new System.Random();
     string[] coolHipPhrases =
     {
         "This is a button",
@@ -26,19 +27,53 @@ public class ModelEnvironment
         "oh NO",
         "Please help me",
         "This might be it for me",
+        "Still broken",
+        "Probably more broken",
         "Ok fixed it sick, thanks"
     };
 
-    float buttonRotation = 0;
-    float buttonPositionOffset = 0;
-    float buttonScale = 1.0f;
+    private float buttonRotation = 0;
+    public float ButtonRotation
+    {
+        get { return buttonRotation; }
+    }
 
-    int currentIndex = 0;
+    private float buttonPositionOffset = 0;
+    public float ButtonPositionOffset
+    {
+        get { return buttonPositionOffset; }
+    }
+
+    private float buttonScale = 1.0f;
+    public float ButtonScale
+    {
+        get { return buttonScale; }
+    }
+
+    private bool reset = false;
+    public bool Reset
+    {
+        get
+        {
+            return reset;
+        }
+
+        set
+        {
+            reset = value;
+        }
+    }
+
+    private int currentIndex = 0;
 
     public string CurrentValue
     {
         get
-        {   if (currentIndex >= 1)
+        {
+            string currentHipPhrase = coolHipPhrases[currentIndex];
+            currentIndex += 1;
+
+            if (currentIndex > 1)
             {
                 MoveButton();
             }
@@ -53,34 +88,37 @@ public class ModelEnvironment
                 GrowButton();
             }
 
-            if (currentIndex == coolHipPhrases.Length - 1)
+            if (currentIndex > coolHipPhrases.Length - 1)
             {
                 ResetButton();
+                currentIndex = 0;
             }
-            currentIndex += 1;
-            return coolHipPhrases[currentIndex];
+
+            return currentHipPhrase;
         }
     }
 
-    void MoveButton()
+   private void MoveButton()
     {
         buttonPositionOffset = numberGenerator.Next(-5, 5) * 10;
     }
 
-    void RotateButton()
+   private void RotateButton()
     {
-        buttonPositionOffset = numberGenerator.Next(0, 360);
+        buttonRotation = numberGenerator.Next(0, 360);
     }
 	
-    void GrowButton()
+    private void GrowButton()
     {
-        buttonScale = (float) numberGenerator.NextDouble() * 3;
+        buttonScale = (float) numberGenerator.NextDouble() + 1;
     }
 
-    void ResetButton()
+   private void ResetButton()
     {
         buttonPositionOffset = 0;
         buttonScale = 1.0f;
         buttonRotation = 0;
+
+        reset = true;
     }
 }
