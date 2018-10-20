@@ -113,6 +113,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &234414271 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 189970, guid: 12ee41758a687f54e98120e486ccd16e,
+    type: 2}
+  m_PrefabInternal: {fileID: 959516275}
 --- !u!1001 &359629328
 Prefab:
   m_ObjectHideFlags: 0
@@ -434,6 +439,7 @@ GameObject:
   - component: {fileID: 1410865074}
   - component: {fileID: 1410865073}
   - component: {fileID: 1410865077}
+  - component: {fileID: 1410865078}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -545,6 +551,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: HTC.UnityPlugin.Vive.BasicGrabbable+UnityEventGrabbable, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &1410865078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1410865072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1658b7dc7eb3a0a42add5c8959eaa73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reticuleSphere: {fileID: 234414271}
 --- !u!1 &1442860563
 GameObject:
   m_ObjectHideFlags: 0
