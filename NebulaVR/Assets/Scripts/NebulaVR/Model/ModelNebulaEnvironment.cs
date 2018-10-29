@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModelNebulaEnvironment : MonoBehaviour {
+// Keeps track of components in their physicality. 
+// Listens for changes in the environment and 
+// Triggers a compilation if so.
+public class ModelNebulaEnvironment : MonoBehaviour
+{
+	List<Component> components; 
 
 	// Use this for initialization
 	//void Start () {
 		
 	//}
-	
-	// Update is called once per frame
-	//void Update () {
+	// 
+}
+
+class Component : MonoBehaviour 
+{
+	public void UpdateInternals ()
+	{
 		
-	//}
+	}
 }
