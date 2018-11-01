@@ -2,19 +2,85 @@
 using System.Collections.Generic;
 using UnityEngine;
 using WebSocketSharp;
+using SimpleJSON;
+using graphQLClient;
 
 public class CompilerMessenger : MonoBehaviour
 {
+  [TextArea]
+  public string getPokemonDetails;
+
+  [TextArea]
+  public string textProgram;
+
   // Use this for initialization
   void Start()
   {
-    SetupClient();
+    GraphQuery.url = "http://localhost:5050/graphql/";
+    GetPikachuDetails();
+    // SetupClient();
   }
 
   // Update is called once per frame
   void Update()
   {
 
+  }
+  public void GetPikachuDetails()
+  {
+    GraphQuery.onQueryComplete += DisplayResult;
+
+    var c2 = new Construct(
+      name: "Result",
+      children: new Construct[] { },
+      pos: new Position(5, 5),
+      info: new ConstructInfo(type: "void")
+    );
+    var c4 = new Construct(
+      name: "Parameter",
+      children: new Construct[] { },
+      pos: new Position(10, 7),
+      info: new ConstructInfo(id: "message", type: "string", init: "Hello, world!")
+    );
+    var c5 = new Construct(
+      name: "Return",
+      children: new Construct[] { },
+      pos: new Position(8, 5),
+      info: new ConstructInfo(type: "void")
+    );
+
+    var c1 = new Construct(
+      name: "Origin",
+      children: new Construct[] { c2 },
+      pos: new Position(3, 3),
+      info: new ConstructInfo(@default: true, id: "hello")
+    );
+    var c3 = new Construct(
+      name: "Function",
+      children: new Construct[] { c4, c5 },
+      pos: new Position(10, 5),
+      info: new ConstructInfo(id: "print")
+    );
+
+    var l1 = new Link(
+      from: new Position(8, 5),
+      to: new Position(5, 5)
+    );
+
+    GraphQuery.variable["constructs"] = Newtonsoft.Json.JsonConvert.SerializeObject(new Construct[] { c1, c3 }).Replace("\"", "\\\"");
+    GraphQuery.variable["links"] = Newtonsoft.Json.JsonConvert.SerializeObject(new Link[] { l1 }).Replace("\"", "\\\"");
+    GraphQuery.variable["program"] = textProgram;
+    GraphQuery.POST(getPokemonDetails);
+  }
+
+  public void DisplayResult()
+  {
+    Debug.Log(GraphQuery.queryReturn);
+  }
+
+  void OnDisable()
+  {
+    GraphQuery.onQueryComplete -= DisplayResult;
   }
 
   public void SetupClient()

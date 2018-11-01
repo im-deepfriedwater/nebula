@@ -33,26 +33,26 @@ module.exports.createConstructs = programText => {
   return { constructs, links };
 };
 
-module.exports.locationToUnitCoords = loc => ({
+const locationToUnitCoords = loc => ({
   x: loc.coordinate.x.value,
   y: loc.coordinate.y.value,
 });
 
-module.exports.parseConstruct = construct => ({
+const parseConstruct = construct => ({
   pos: locationToUnitCoords(construct.location),
   children: Array.isArray(construct.body)
     ? construct.body.filter(c => c.location).map(parseConstruct)
     : [],
-  styles: styles[construct.getClassName()],
+  // styles: styles[construct.getClassName()],
   name: construct.getClassName(),
   info: parser(construct),
   id: construct.key,
 });
 
-module.exports.parseLink = construct => ({
+const parseLink = construct => ({
   from: locationToUnitCoords(construct.from),
   to: locationToUnitCoords(construct.to),
-  styles: styles.linkNode,
+  // styles: styles.linkNode,
   id: construct.key,
 });
 
@@ -86,3 +86,7 @@ module.exports.generateProgram = (constructs, links) => {
   );
   return `${textConstructs.join("\n\n")}\n\n${textLinks.join("\n")}`;
 };
+
+module.exports.locationToUnitCoords = locationToUnitCoords;
+module.exports.parseConstruct = parseConstruct;
+module.exports.parseLink = parseLink;

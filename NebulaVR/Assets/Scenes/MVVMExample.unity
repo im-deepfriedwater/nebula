@@ -558,6 +558,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11474b984db09cb4aa0f685f955adc58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  getPokemonDetails: "query TestCompileAndParse {\n  compile(constructs: \"$constructs^\",
+    links: \"$links^\") {\n    program\n    output\n    stdout\n  }\n  parse(program:
+    \"$program^\") {\n    constructs\n    links\n  }\n}"
+  textProgram: Origin default \"hello\" (3, 3)\n  Result void (5, 5)\n\nFunction \"print\"
+    (10, 5)\n  Parameter \"message\" (10, 7)\n    initialize string \"Hello, world!\"\n  Return
+    (8, 5)\n\nLink (8, 5) (5, 5)
 --- !u!1 &1404818624
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,3 +769,45 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &2057239822
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4983024729538706, guid: 0ebe3230a3425034891774d9ae4e80b3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983024729538706, guid: 0ebe3230a3425034891774d9ae4e80b3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983024729538706, guid: 0ebe3230a3425034891774d9ae4e80b3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983024729538706, guid: 0ebe3230a3425034891774d9ae4e80b3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983024729538706, guid: 0ebe3230a3425034891774d9ae4e80b3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983024729538706, guid: 0ebe3230a3425034891774d9ae4e80b3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983024729538706, guid: 0ebe3230a3425034891774d9ae4e80b3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983024729538706, guid: 0ebe3230a3425034891774d9ae4e80b3, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ebe3230a3425034891774d9ae4e80b3, type: 2}
+  m_IsPrefabAsset: 0

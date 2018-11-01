@@ -10,7 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ws": "^6.1.0",
-    "nebula": "github:CapnSquirrel/nebula"
+    "apollo-boost": "^0.1.18",
+    "apollo-server-express": "^2.1.0",
+    "express": "^4.16.4",
+    "graphql": "^14.0.2",
+    "graphql-tag": "^2.10.0",
+    "nebula": "github:CapnSquirrel/nebula",
+    "node-fetch": "^2.2.0",
+    "ws": "^6.1.0"
   }
 }
