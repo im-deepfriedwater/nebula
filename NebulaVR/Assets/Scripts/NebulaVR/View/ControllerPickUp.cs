@@ -4,11 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using HTC.UnityPlugin.Vive;
 
-
 public class ControllerPickUp : MonoBehaviour
     , IPointerEnterHandler
     , IPointerExitHandler
-    //, IPointerClickHandler
     , IPointerDownHandler
     , IPointerUpHandler
 {
