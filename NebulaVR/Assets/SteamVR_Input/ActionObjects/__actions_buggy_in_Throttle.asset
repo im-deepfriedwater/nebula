@@ -13,5 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTolerance: 0.000001
   fullPath: /actions/buggy/in/Throttle
+<<<<<<< HEAD
   actionSet: {fileID: 11400000, guid: 238d0a4832fba1147b3d07faa051350a, type: 2}
+=======
+  actionSet: {fileID: 11400000, guid: 3fb1b8b9344fa2149aa4e6e421bf24b8, type: 2}
+>>>>>>> master
   direction: 0

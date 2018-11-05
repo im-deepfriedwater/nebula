@@ -16,9 +16,15 @@ MonoBehaviour:
   - platformer
   - buggy
   actionSetObjects:
+<<<<<<< HEAD
   - {fileID: 11400000, guid: acc829958ec28d648bde72138c419f9a, type: 2}
   - {fileID: 11400000, guid: b7cd90bf1af031d48bcb09c316720f9f, type: 2}
   - {fileID: 11400000, guid: 238d0a4832fba1147b3d07faa051350a, type: 2}
+=======
+  - {fileID: 11400000, guid: de75edb48181f354c862ca4dfe54a10a, type: 2}
+  - {fileID: 11400000, guid: 8efb0813b962217409758f732422873e, type: 2}
+  - {fileID: 11400000, guid: 3fb1b8b9344fa2149aa4e6e421bf24b8, type: 2}
+>>>>>>> master
   actionNames:
   - __actions_default_in_InteractUI
   - __actions_default_in_Teleport
@@ -36,6 +42,7 @@ MonoBehaviour:
   - __actions_buggy_in_Brake
   - __actions_buggy_in_Reset
   actionObjects:
+<<<<<<< HEAD
   - {fileID: 11400000, guid: fd80177bbba602040bdea0f264122f03, type: 2}
   - {fileID: 11400000, guid: 41806da941e9f23489cba70aa30d17b7, type: 2}
   - {fileID: 11400000, guid: 43915573c12a63b4b84a23ca694ab38d, type: 2}
@@ -51,3 +58,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 42d4b9f2659208747864082246719c37, type: 2}
   - {fileID: 11400000, guid: 276551f433b31ae40882b0ff9d959eec, type: 2}
   - {fileID: 11400000, guid: 50e19b48f75e93c45a1668649e1d18c6, type: 2}
+=======
+  - {fileID: 11400000, guid: 1ee9acc9b57bb914592c73131a8ae3df, type: 2}
+  - {fileID: 11400000, guid: 9cace4e039ad03f4b8997e7a7a757563, type: 2}
+  - {fileID: 11400000, guid: 49801c263c580864c8640edd1c728def, type: 2}
+  - {fileID: 11400000, guid: c8de6dbc3c054f14b887030884de96a9, type: 2}
+  - {fileID: 11400000, guid: 26cf5dedf9f58a646968f6b14a4ba35f, type: 2}
+  - {fileID: 11400000, guid: dd293f0bb2e815448b88fee3c9d0639d, type: 2}
+  - {fileID: 11400000, guid: 8b1916722efd55640b2186cdbdb2bfb2, type: 2}
+  - {fileID: 11400000, guid: 87a68d821eb7a5540be9aa0b79618cbb, type: 2}
+  - {fileID: 11400000, guid: 5affcfd147930a04ab66013ea483f6b7, type: 2}
+  - {fileID: 11400000, guid: 41e5a106fd830e049bcd69321542172c, type: 2}
+  - {fileID: 11400000, guid: 0125c486748b594459a9642c5d5e2c12, type: 2}
+  - {fileID: 11400000, guid: 98df8c007e9daff4e8fd92cf8f1117dd, type: 2}
+  - {fileID: 11400000, guid: b6b509bd38e8d8e4184e1c5c833fd9f8, type: 2}
+  - {fileID: 11400000, guid: f9728cb0f9e5a0e43985b4ff6cc1fd51, type: 2}
+  - {fileID: 11400000, guid: 6d11996b0463d0f4ab99aad69f1eda66, type: 2}
+>>>>>>> master

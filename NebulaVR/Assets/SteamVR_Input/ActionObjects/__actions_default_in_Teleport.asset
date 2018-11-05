@@ -13,5 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeTolerance: 0.000001
   fullPath: /actions/default/in/Teleport
+<<<<<<< HEAD
   actionSet: {fileID: 11400000, guid: acc829958ec28d648bde72138c419f9a, type: 2}
+=======
+  actionSet: {fileID: 11400000, guid: de75edb48181f354c862ca4dfe54a10a, type: 2}
+>>>>>>> master
   direction: 0

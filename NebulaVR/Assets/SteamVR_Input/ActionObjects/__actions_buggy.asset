@@ -8,6 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 592b68dc499409a47b20bd15d5227ed2, type: 3}
   m_Name: __actions_buggy
   m_EditorClassIdentifier: 
@@ -21,10 +22,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 42d4b9f2659208747864082246719c37, type: 2}
   - {fileID: 11400000, guid: 276551f433b31ae40882b0ff9d959eec, type: 2}
   - {fileID: 11400000, guid: 50e19b48f75e93c45a1668649e1d18c6, type: 2}
+=======
+  m_Script: {fileID: 11500000, guid: 4b09bf9975ff8bf4b8719699715fa0b4, type: 3}
+  m_Name: __actions_buggy
+  m_EditorClassIdentifier: 
+  allActions:
+  - {fileID: 11400000, guid: 98df8c007e9daff4e8fd92cf8f1117dd, type: 2}
+  - {fileID: 11400000, guid: b6b509bd38e8d8e4184e1c5c833fd9f8, type: 2}
+  - {fileID: 11400000, guid: f9728cb0f9e5a0e43985b4ff6cc1fd51, type: 2}
+  - {fileID: 11400000, guid: 6d11996b0463d0f4ab99aad69f1eda66, type: 2}
+  nonVisualInActions:
+  - {fileID: 11400000, guid: 98df8c007e9daff4e8fd92cf8f1117dd, type: 2}
+  - {fileID: 11400000, guid: b6b509bd38e8d8e4184e1c5c833fd9f8, type: 2}
+  - {fileID: 11400000, guid: f9728cb0f9e5a0e43985b4ff6cc1fd51, type: 2}
+  - {fileID: 11400000, guid: 6d11996b0463d0f4ab99aad69f1eda66, type: 2}
+>>>>>>> master
   visualActions: []
   poseActions: []
   skeletonActions: []
   outActionArray: []
   fullPath: /actions/buggy
   usage: single
+<<<<<<< HEAD
   inActions: {fileID: 11400000, guid: 0377bdfb7ad5c964ea62284f5ad398e1, type: 2}
+=======
+  inActions: {fileID: 11400000, guid: f984af1621fa9c042a6f8c95a0d6c97d, type: 2}
+>>>>>>> master

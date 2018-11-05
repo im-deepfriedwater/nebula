@@ -8,6 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 430f2227ccfbdc445a54c953f4c0b60e, type: 3}
   m_Name: __actions_default
   m_EditorClassIdentifier: 
@@ -44,3 +45,41 @@ MonoBehaviour:
   usage: single
   inActions: {fileID: 11400000, guid: e591b23a9dc590541a78d350565d3e69, type: 2}
   outActions: {fileID: 11400000, guid: 9ff9d09dc8fe53e43a2b4adb164774f0, type: 2}
+=======
+  m_Script: {fileID: 11500000, guid: 9cc970c8b6e9316489618d68d682e462, type: 3}
+  m_Name: __actions_default
+  m_EditorClassIdentifier: 
+  allActions:
+  - {fileID: 11400000, guid: 1ee9acc9b57bb914592c73131a8ae3df, type: 2}
+  - {fileID: 11400000, guid: 9cace4e039ad03f4b8997e7a7a757563, type: 2}
+  - {fileID: 11400000, guid: 49801c263c580864c8640edd1c728def, type: 2}
+  - {fileID: 11400000, guid: c8de6dbc3c054f14b887030884de96a9, type: 2}
+  - {fileID: 11400000, guid: 26cf5dedf9f58a646968f6b14a4ba35f, type: 2}
+  - {fileID: 11400000, guid: dd293f0bb2e815448b88fee3c9d0639d, type: 2}
+  - {fileID: 11400000, guid: 8b1916722efd55640b2186cdbdb2bfb2, type: 2}
+  - {fileID: 11400000, guid: 87a68d821eb7a5540be9aa0b79618cbb, type: 2}
+  - {fileID: 11400000, guid: 5affcfd147930a04ab66013ea483f6b7, type: 2}
+  nonVisualInActions:
+  - {fileID: 11400000, guid: 1ee9acc9b57bb914592c73131a8ae3df, type: 2}
+  - {fileID: 11400000, guid: 9cace4e039ad03f4b8997e7a7a757563, type: 2}
+  - {fileID: 11400000, guid: 49801c263c580864c8640edd1c728def, type: 2}
+  - {fileID: 11400000, guid: c8de6dbc3c054f14b887030884de96a9, type: 2}
+  - {fileID: 11400000, guid: 87a68d821eb7a5540be9aa0b79618cbb, type: 2}
+  visualActions:
+  - {fileID: 11400000, guid: 26cf5dedf9f58a646968f6b14a4ba35f, type: 2}
+  - {fileID: 11400000, guid: dd293f0bb2e815448b88fee3c9d0639d, type: 2}
+  - {fileID: 11400000, guid: 8b1916722efd55640b2186cdbdb2bfb2, type: 2}
+  poseActions:
+  - {fileID: 11400000, guid: 26cf5dedf9f58a646968f6b14a4ba35f, type: 2}
+  - {fileID: 11400000, guid: dd293f0bb2e815448b88fee3c9d0639d, type: 2}
+  - {fileID: 11400000, guid: 8b1916722efd55640b2186cdbdb2bfb2, type: 2}
+  skeletonActions:
+  - {fileID: 11400000, guid: dd293f0bb2e815448b88fee3c9d0639d, type: 2}
+  - {fileID: 11400000, guid: 8b1916722efd55640b2186cdbdb2bfb2, type: 2}
+  outActionArray:
+  - {fileID: 11400000, guid: 5affcfd147930a04ab66013ea483f6b7, type: 2}
+  fullPath: /actions/default
+  usage: single
+  inActions: {fileID: 11400000, guid: 88760a8c29a8d644aa8fd74013d5acdc, type: 2}
+  outActions: {fileID: 11400000, guid: 65ca86655034ec44c83dc7b29bd04005, type: 2}
+>>>>>>> master

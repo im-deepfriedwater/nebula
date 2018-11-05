@@ -8,12 +8,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
+<<<<<<< HEAD
   m_Script: {fileID: 11500000, guid: 896befd2f941762419df5a3ab659c386, type: 3}
+=======
+  m_Script: {fileID: 11500000, guid: f25b2544b5503954caf19206e8dd50bb, type: 3}
+>>>>>>> master
   m_Name: SteamVR_Input_ActionSet_buggy_In
   m_EditorClassIdentifier: 
   actionSet: {fileID: 0}
   listDirection: 0
   actions:
+<<<<<<< HEAD
   - {fileID: 11400000, guid: cf21bc8507cb9264b985dc4a53696003, type: 2}
   - {fileID: 11400000, guid: 42d4b9f2659208747864082246719c37, type: 2}
   - {fileID: 11400000, guid: 276551f433b31ae40882b0ff9d959eec, type: 2}
@@ -22,3 +27,13 @@ MonoBehaviour:
   Throttle: {fileID: 11400000, guid: 42d4b9f2659208747864082246719c37, type: 2}
   Brake: {fileID: 11400000, guid: 276551f433b31ae40882b0ff9d959eec, type: 2}
   Reset: {fileID: 11400000, guid: 50e19b48f75e93c45a1668649e1d18c6, type: 2}
+=======
+  - {fileID: 11400000, guid: 98df8c007e9daff4e8fd92cf8f1117dd, type: 2}
+  - {fileID: 11400000, guid: b6b509bd38e8d8e4184e1c5c833fd9f8, type: 2}
+  - {fileID: 11400000, guid: f9728cb0f9e5a0e43985b4ff6cc1fd51, type: 2}
+  - {fileID: 11400000, guid: 6d11996b0463d0f4ab99aad69f1eda66, type: 2}
+  Steering: {fileID: 11400000, guid: 98df8c007e9daff4e8fd92cf8f1117dd, type: 2}
+  Throttle: {fileID: 11400000, guid: b6b509bd38e8d8e4184e1c5c833fd9f8, type: 2}
+  Brake: {fileID: 11400000, guid: f9728cb0f9e5a0e43985b4ff6cc1fd51, type: 2}
+  Reset: {fileID: 11400000, guid: 6d11996b0463d0f4ab99aad69f1eda66, type: 2}
+>>>>>>> master
