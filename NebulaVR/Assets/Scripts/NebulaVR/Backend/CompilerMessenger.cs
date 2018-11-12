@@ -7,70 +7,40 @@ using graphQLClient;
 
 public class CompilerMessenger : MonoBehaviour
 {
-  [TextArea]
-  public string getPokemonDetails;
+  public static string CompileConstructsWithLinks = @"
+    query CompileConstructsWithLinks {
+      compile(constructs: ""$constructs^"", links: ""$links^"") {
+        program
+        output
+        stdout
+      }
+    }
+  ";
 
-  [TextArea]
-  public string textProgram;
+  public static string ParseProgram = @"
+    query ParseProgram {
+      parse(program: ""$program^"") {
+        constructs
+        links
+      }
+    }
+  ";
 
-  // Use this for initialization
   void Start()
   {
     GraphQuery.url = "http://localhost:5050/graphql/";
-    GetPikachuDetails();
-    // SetupClient();
+    SendQueryToBackend();
   }
-
-  // Update is called once per frame
-  void Update()
-  {
-
-  }
-  public void GetPikachuDetails()
+  public void SendQueryToBackend()
   {
     GraphQuery.onQueryComplete += DisplayResult;
 
-    var c2 = new Construct(
-      name: "Result",
-      children: new Construct[] { },
-      pos: new Position(5, 5),
-      info: new ConstructInfo(type: "void")
-    );
-    var c4 = new Construct(
-      name: "Parameter",
-      children: new Construct[] { },
-      pos: new Position(10, 7),
-      info: new ConstructInfo(id: "message", type: "string", init: "Hello, world!")
-    );
-    var c5 = new Construct(
-      name: "Return",
-      children: new Construct[] { },
-      pos: new Position(8, 5),
-      info: new ConstructInfo(type: "void")
-    );
+    GraphQuery.variable["constructs"] = TestData.GetSampleContructs().Replace("\"", "\\\"");
+    GraphQuery.variable["links"] = TestData.GetSampleLinks().Replace("\"", "\\\"");
+    GraphQuery.POST(CompileConstructsWithLinks);
 
-    var c1 = new Construct(
-      name: "Origin",
-      children: new Construct[] { c2 },
-      pos: new Position(3, 3),
-      info: new ConstructInfo(@default: true, id: "hello")
-    );
-    var c3 = new Construct(
-      name: "Function",
-      children: new Construct[] { c4, c5 },
-      pos: new Position(10, 5),
-      info: new ConstructInfo(id: "print")
-    );
-
-    var l1 = new Link(
-      from: new Position(8, 5),
-      to: new Position(5, 5)
-    );
-
-    GraphQuery.variable["constructs"] = Newtonsoft.Json.JsonConvert.SerializeObject(new Construct[] { c1, c3 }).Replace("\"", "\\\"");
-    GraphQuery.variable["links"] = Newtonsoft.Json.JsonConvert.SerializeObject(new Link[] { l1 }).Replace("\"", "\\\"");
-    GraphQuery.variable["program"] = textProgram;
-    GraphQuery.POST(getPokemonDetails);
+    GraphQuery.variable["program"] = TestData.HELLO_WORLD;
+    GraphQuery.POST(ParseProgram);
   }
 
   public void DisplayResult()
@@ -82,60 +52,8 @@ public class CompilerMessenger : MonoBehaviour
   {
     GraphQuery.onQueryComplete -= DisplayResult;
   }
-
-  public void SetupClient()
-  {
-    var ws = new WebSocket("ws://localhost:5050");
-    ws.OnMessage += (sender, e) =>
-      Debug.Log("Recieved from Server: " + e.Data);
-    ws.Connect();
-
-
-    var c2 = new Construct(
-      name: "Result",
-      children: new Construct[] { },
-      pos: new Position(5, 5),
-      info: new ConstructInfo(type: "void")
-    );
-    var c4 = new Construct(
-      name: "Parameter",
-      children: new Construct[] { },
-      pos: new Position(10, 7),
-      info: new ConstructInfo(id: "message", type: "string", init: "Hello, world!")
-    );
-    var c5 = new Construct(
-      name: "Return",
-      children: new Construct[] { },
-      pos: new Position(8, 5),
-      info: new ConstructInfo(type: "void")
-    );
-
-    var c1 = new Construct(
-      name: "Origin",
-      children: new Construct[] { c2 },
-      pos: new Position(3, 3),
-      info: new ConstructInfo(@default: true, id: "hello")
-    );
-    var c3 = new Construct(
-      name: "Function",
-      children: new Construct[] { c4, c5 },
-      pos: new Position(10, 5),
-      info: new ConstructInfo(id: "print")
-    );
-
-    var l1 = new Link(
-      new Position(8, 5),
-      new Position(5, 5)
-    );
-
-    var obj = new
-    {
-      constructs = new Construct[] { c1, c3 },
-      links = new Link[] { l1 }
-    };
-    ws.Send(Newtonsoft.Json.JsonConvert.SerializeObject(obj));
-  }
 }
+
 
 class Position
 {
@@ -188,5 +106,65 @@ class Link
   {
     this.from = from;
     this.to = to;
+  }
+}
+
+class TestData
+{
+  public static string HELLO_WORLD = @"
+    Origin default ""hello"" (3, 3)
+      Result void (5, 5)
+
+    Function ""print"" (10, 5)
+      Parameter ""message"" (10, 7)
+        initialize string ""Hello, world!""
+      Return (8, 5)
+
+    Link (8, 5) (5, 5)
+  ";
+
+  public static string GetSampleContructs()
+  {
+    var c2 = new Construct(
+      name: "Result",
+      children: new Construct[] { },
+      pos: new Position(5, 5),
+      info: new ConstructInfo(type: "void")
+    );
+    var c4 = new Construct(
+      name: "Parameter",
+      children: new Construct[] { },
+      pos: new Position(10, 7),
+      info: new ConstructInfo(id: "message", type: "string", init: "Hello, world!")
+    );
+    var c5 = new Construct(
+      name: "Return",
+      children: new Construct[] { },
+      pos: new Position(8, 5),
+      info: new ConstructInfo(type: "void")
+    );
+
+    var c1 = new Construct(
+      name: "Origin",
+      children: new Construct[] { c2 },
+      pos: new Position(3, 3),
+      info: new ConstructInfo(@default: true, id: "hello")
+    );
+    var c3 = new Construct(
+      name: "Function",
+      children: new Construct[] { c4, c5 },
+      pos: new Position(10, 5),
+      info: new ConstructInfo(id: "print")
+    );
+    return Newtonsoft.Json.JsonConvert.SerializeObject(new Construct[] { c1, c3 });
+  }
+
+  public static string GetSampleLinks()
+  {
+    var l1 = new Link(
+      from: new Position(8, 5),
+      to: new Position(5, 5)
+    );
+    return Newtonsoft.Json.JsonConvert.SerializeObject(new Link[] { l1 });
   }
 }
