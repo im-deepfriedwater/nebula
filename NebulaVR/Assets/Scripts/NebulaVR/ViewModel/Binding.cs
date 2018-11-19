@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public class Binding
 {
-    ViewBlock vb;
-    ModelBlock mb;
-    UnityEvent environmentChanged;
+    readonly ViewBlock vb;
+    readonly ModelBlock mb;
+    readonly UnityEvent environmentChanged;
 
     public Binding(ViewBlock vb, ModelBlock mb, UnityEvent viewModelEvent)
     {

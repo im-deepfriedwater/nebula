@@ -5,33 +5,34 @@ using UnityEngine;
 // Keeps track of components in their physicality. 
 // Listens for changes in the environment and 
 // Triggers a compilation if so.
-public class ModelNebulaEnvironment : MonoBehaviour
+public class ModelEnvironment : MonoBehaviour
 {
-	LinkedList<ModelBlock> blocks = new LinkedList<ModelBlock>();
-    LinkedList<ModelLink> links = new LinkedList<ModelLink>();
+	HashSet<ModelBlock> blocks = new HashSet<ModelBlock>();
+    HashSet<ModelLink> links = new HashSet<ModelLink>();
 
     public void TriggerCompliation()
-    {
+    {   
+        // TODO to slot in with server implementation.
         throw new System.NotImplementedException();
     }
 
     public void AddBlock(ModelBlock mb)
     {
-        blocks.AddLast(mb);
+        blocks.Add(mb);
     }
 
-    public void RemoveBlock()
+    public void RemoveBlock(ModelBlock mb)
     {
-        throw new System.NotImplementedException();
+        blocks.Remove(mb);
     }
 
     public void AddLink(ModelLink ml)
     {
-        links.AddLast(ml);
+        links.Add(ml);
     }
 
-    public void RemoveLink()
+    public void RemoveLink(ModelLink ml)
     {
-        throw new System.NotImplementedException();
+        links.Remove(ml);
     }
 }

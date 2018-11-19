@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModelBlock : MonoBehaviour {
+public class ModelBlock {
+    private Vector3 position;
+    public Vector3 Position
+    {
+        set
+        {
+            position = value;
+        }
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    readonly ConstructInfo constructInfo;
+
+    public ModelBlock(Vector3 position, ConstructInfo constructInfo)
+    {
+        this.position = position;
+        this.constructInfo = constructInfo;
+    }
 }

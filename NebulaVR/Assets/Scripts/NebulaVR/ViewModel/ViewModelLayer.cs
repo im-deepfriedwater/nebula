@@ -1,21 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ViewModelLayer : MonoBehaviour
 {
-    // TODO refactor this for a more elegant way so we can decouple this.
+    // TODO refactor for a more elegant way so we can decouple this.
+    // Maybe through Eventlisteners or delegates
+    public GameObject viewBlockPrefab;
     public ModelEnvironment me;
-    private LinkedList<Binding> bindings = new LinkedList<Binding>();
+    private Vector3 defaultPosition = new Vector3(0, 0, 0);
+    private readonly HashSet<Binding> bindings = new HashSet<Binding>();
+    private readonly UnityEvent environmentChanged;
 
-    public void add(ViewConstruct construct)
+    private void Add(ModelBlock modelBlock)
     {
-        //me.add();
+        me.AddBlock(modelBlock);
         throw new System.NotImplementedException();
     }
 
-    public void delete(int index)
+    public void Delete(Binding binding)
     {
-        throw new System.NotImplementedException();
+        bindings.Remove(binding);
+    }
+
+    public void ConstructAndBindViewBlock(Vector3 position, ConstructInfo constructInfo)
+    {
+        var gameObject = Instantiate(viewBlockPrefab, defaultPosition, Quaternion.identity) as GameObject;
+        var viewBlock = gameObject.GetComponent(typeof(ViewBlock)) as ViewBlock;
+        var modelBlock = new ModelBlock(defaultPosition, constructInfo);
+        var binding = new Binding(viewBlock, modelBlock, environmentChanged);
+
+        viewBlock.Initialize(binding);
+        Add(modelBlock);
     }
 }
