@@ -8,6 +8,8 @@ using HTC.UnityPlugin.ColliderEvent;
 public class LinkBehavior : MonoBehaviour {
     Vector3 startPos;
     Vector3 endPos;
+    GameObject rightHand;
+    GameObject leftHand;
 
     void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 0.2f)
     {
@@ -24,19 +26,23 @@ public class LinkBehavior : MonoBehaviour {
         Debug.Log(start);
         Debug.Log(end);
     }
-
+    void Start ()
+    {
+        rightHand = GameObject.Find("RightHand");
+        leftHand = GameObject.Find("LeftHand");
+    }
 	void Update () {
-        GameObject rightHand = GameObject.Find("RightHand");
+        
         if (Linkable.colliding)
             //SEND BOOLEANS OF PRESSDOWN TO LINKABLE TO GET MOST UPDATED POSITIONS
         {
-            if (ViveInput.GetPressDown(HandRole.RightHand, ControllerButton.Grip))
+            if (ViveInput.GetPressDown(HandRole.RightHand, ControllerButton.Grip) || ViveInput.GetPressDown(HandRole.LeftHand, ControllerButton.Grip))
             {
                 startPos = Linkable.position;
                 Debug.Log(Linkable.colliding);
             }
 
-            if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Grip))
+            if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Grip) || ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Grip))
             {
                 if (endPos != startPos)
                 {

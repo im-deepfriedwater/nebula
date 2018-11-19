@@ -12,19 +12,12 @@ public class Linkable : MonoBehaviour
 
     public void OnColliderEventHoverEnter(ColliderHoverEventData eventData)
     {
-        colliding = true;
+        this.colliding = true;
         position = this.transform.position;
-        Debug.Log("*hacker voice* im in");
     }
 
     public void OnColliderEventHoverExit(ColliderHoverEventData eventData)
     {
-        colliding = false;
-        Debug.Log("we out");
+        this.colliding = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
