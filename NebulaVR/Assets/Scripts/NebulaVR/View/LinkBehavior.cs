@@ -34,7 +34,6 @@ public class LinkBehavior : MonoBehaviour {
 	void Update () {
         
         if (Linkable.colliding)
-            //SEND BOOLEANS OF PRESSDOWN TO LINKABLE TO GET MOST UPDATED POSITIONS
         {
             if (ViveInput.GetPressDown(HandRole.RightHand, ControllerButton.Grip) || ViveInput.GetPressDown(HandRole.LeftHand, ControllerButton.Grip))
             {
