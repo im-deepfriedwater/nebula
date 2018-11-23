@@ -10,4 +10,5 @@ public abstract class ViewConstruct: MonoBehaviour
         get { return gameObject.transform.position; }
     }
     abstract public void SignifyChange();
+    //abstract public void Delete();
 }

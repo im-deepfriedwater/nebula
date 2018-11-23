@@ -5,18 +5,18 @@ using UnityEngine.Events;
 
 public class ViewModelLayer : MonoBehaviour
 {
+
     // TODO refactor for a more elegant way so we can decouple this.
-    // Maybe through Eventlisteners or delegates
+    // Maybe through Eventlisteners or delegates?
     public GameObject viewBlockPrefab;
     public ModelEnvironment me;
     private Vector3 defaultPosition = new Vector3(0, 0, 0);
     private readonly HashSet<Binding> bindings = new HashSet<Binding>();
     private readonly UnityEvent environmentChanged;
 
-    private void Add(ModelBlock modelBlock)
+    private void AddToModel(ModelBlock modelBlock)
     {
         me.AddBlock(modelBlock);
-        throw new System.NotImplementedException();
     }
 
     public void Delete(Binding binding)
@@ -24,14 +24,25 @@ public class ViewModelLayer : MonoBehaviour
         bindings.Remove(binding);
     }
 
-    public void ConstructAndBindViewBlock(Vector3 position, ConstructInfo constructInfo)
+    public void ConstructAndBindViewBlock(Vector3 position, PremadeBlock blockType)
     {
-        var gameObject = Instantiate(viewBlockPrefab, defaultPosition, Quaternion.identity) as GameObject;
-        var viewBlock = gameObject.GetComponent(typeof(ViewBlock)) as ViewBlock;
-        var modelBlock = new ModelBlock(defaultPosition, constructInfo);
+        var gameObjectViewBlock = Instantiate(viewBlockPrefab, defaultPosition, Quaternion.identity) as GameObject;
+        var viewBlock = gameObjectViewBlock.GetComponent(typeof(ViewBlock)) as ViewBlock;
+        var modelBlock = ConvertViewBlockToModelBlock(gameObjectViewBlock);
         var binding = new Binding(viewBlock, modelBlock, environmentChanged);
-
         viewBlock.Initialize(binding);
-        Add(modelBlock);
+        AddToModel(modelBlock);
+        bindings.Add(binding);
+    }
+
+    public ModelBlock ConvertViewBlockToModelBlock(GameObject gameObjectViewBlock)
+    {
+        List<ModelComponent> modelComponents = new List<ModelComponent>();
+        Vector3 viewPosition = gameObjectViewBlock.transform.position; 
+        foreach (ViewComponent vc in gameObjectViewBlock.GetComponentsInChildren<ViewComponent>())
+        {
+            modelComponents.Add(new ModelComponent(vc.componentType, vc.Position));
+        } // TODO should components have references to their parents?
+        return new ModelBlock(viewPosition, modelComponents);
     }
 }

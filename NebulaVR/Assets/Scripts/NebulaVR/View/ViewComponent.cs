@@ -9,21 +9,17 @@ public class ViewComponent: ViewConstruct
     // Positions in space.
     // Perhaps also the type of component it is.
     // Inputs and outputs.
-
     ViewBlock parent;
     Vector3 internalPosition; // NOTE: This is relative to the parent.
     ViewLink link;
 
-    [SerializeField]
-    private ComponentType type;
+    public readonly ComponentType componentType;
 
-    // This is for programmatically generating a component. TODO for now.
-    //public void Initialize(ComponentType type, ViewBlock parent, Vector3 position)
-    //{
-    //    this.type = type;
-    //    this.parent = parent;
-    //    this.internalPosition = position;
-    //} 
+
+    public void Initialize(ViewBlock parent)
+    {
+        this.parent = parent;
+    }
 
     // Should be called by the controller when a component is moved.
     override public void SignifyChange()
@@ -40,7 +36,7 @@ public class ViewComponent: ViewConstruct
 
     private void UpdateInternals()
     {
-        // TODO internalPosition needs to be updated
+        this.internalPosition = gameObject.transform.localPosition;
     }
 }
 

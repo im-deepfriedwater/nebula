@@ -9,3 +9,7 @@ public class MockLanguageConstructs
     //    var result = new ViewBlock();
     //}
 }
+
+public enum PremadeBlock {
+    AddFunction
+}
