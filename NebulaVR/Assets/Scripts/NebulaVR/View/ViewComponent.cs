@@ -38,6 +38,11 @@ public class ViewComponent: ViewConstruct
     {
         this.internalPosition = gameObject.transform.localPosition;
     }
+
+    public override void Delete()
+    {
+        throw new System.NotImplementedException();
+    }
 }
 
 public enum ComponentType

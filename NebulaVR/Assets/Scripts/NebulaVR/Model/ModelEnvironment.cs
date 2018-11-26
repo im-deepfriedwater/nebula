@@ -7,8 +7,18 @@ using UnityEngine;
 // Triggers a compilation if so.
 public class ModelEnvironment : MonoBehaviour
 {
-	HashSet<ModelBlock> blocks = new HashSet<ModelBlock>();
+    HashSet<ModelBlock> blocks = new HashSet<ModelBlock>();
     HashSet<ModelLink> links = new HashSet<ModelLink>();
+
+    public int BlocksLength 
+    {
+        get { return blocks.Count; }
+    }
+
+    public int LinksLength
+    {
+        get { return links.Count;  }
+    }
 
     public void TriggerCompliation()
     {   

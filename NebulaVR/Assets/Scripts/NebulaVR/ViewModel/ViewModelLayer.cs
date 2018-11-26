@@ -5,14 +5,22 @@ using UnityEngine.Events;
 
 public class ViewModelLayer : MonoBehaviour
 {
-
-    // TODO refactor for a more elegant way so we can decouple this.
-    // Maybe through Eventlisteners or delegates?
     public GameObject viewBlockPrefab;
     public ModelEnvironment me;
     private Vector3 defaultPosition = new Vector3(0, 0, 0);
     private readonly HashSet<Binding> bindings = new HashSet<Binding>();
-    private readonly UnityEvent environmentChanged;
+    private readonly UnityEvent environmentChanged = new UnityEvent();
+
+    public void Start()
+    {
+        environmentChanged.AddListener(Test);
+    }
+
+    private void Test()
+    {
+        Debug.Log("Lol");
+        //me.TriggerCompliation();
+    }
 
     private void AddToModel(ModelBlock modelBlock)
     {
@@ -21,12 +29,13 @@ public class ViewModelLayer : MonoBehaviour
 
     public void Delete(Binding binding)
     {
+        binding.DeleteFromViewAndModel(me);
         bindings.Remove(binding);
     }
 
     public void ConstructAndBindViewBlock(Vector3 position, PremadeBlock blockType)
-    {
-        var gameObjectViewBlock = Instantiate(viewBlockPrefab, defaultPosition, Quaternion.identity) as GameObject;
+    {   
+        var gameObjectViewBlock = Instantiate(viewBlockPrefab, position, Quaternion.identity, me.transform) as GameObject;
         var viewBlock = gameObjectViewBlock.GetComponent(typeof(ViewBlock)) as ViewBlock;
         var modelBlock = ConvertViewBlockToModelBlock(gameObjectViewBlock);
         var binding = new Binding(viewBlock, modelBlock, environmentChanged);

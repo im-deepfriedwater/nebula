@@ -18,12 +18,12 @@ public class Binding
 
     public void PropagateChange()
     {
-        TranslatePositionFromViewToModel();
         this.environmentChanged.Invoke();
     }
 
-    private void TranslatePositionFromViewToModel()
+    public void DeleteFromViewAndModel(ModelEnvironment me)
     {
-        throw new System.NotImplementedException();
+        this.vb.Delete();
+        me.RemoveBlock(this.mb);
     }
 }

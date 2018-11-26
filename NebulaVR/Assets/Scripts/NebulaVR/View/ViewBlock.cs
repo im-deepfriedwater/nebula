@@ -11,10 +11,15 @@ public class ViewBlock : ViewConstruct
     {
         this.binding = binding;
     }
-
+     
     // This should be called whenever this block is modified.
     override public void SignifyChange()
     {
         this.binding.PropagateChange();
+    }
+
+    public override void Delete()
+    {
+        Object.Destroy(this.gameObject);
     }
 }
