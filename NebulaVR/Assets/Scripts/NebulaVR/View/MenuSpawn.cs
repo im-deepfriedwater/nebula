@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuSpawn : MonoBehaviour {
-	public float spawnDistance = 3;
+	public float spawnDistance;
 	public GameObject player;
 	
 	void Start() {
@@ -11,4 +11,18 @@ public class MenuSpawn : MonoBehaviour {
 		Vector3 playerDirection = player.transform.forward;
 		transform.position = playerPosition + playerDirection * spawnDistance;
 	}
+
+	void Update() {
+	}
+
+	void OnEnable()
+    {
+		Vector3 playerPosition = player.transform.position;
+		Vector3 playerDirection = player.transform.forward;
+		transform.position = playerPosition + playerDirection * spawnDistance;
+    }
+	void OnDisable()
+    {
+    }
+	
 }
