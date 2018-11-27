@@ -1,35 +1,12 @@
-const express = require("express");
-const { ApolloServer, gql } = require("apollo-server-express");
 const {
   generateProgram,
   runProgram,
   createConstructs,
   parseConstruct,
   parseLink,
-} = require("./utils/nebula");
+} = require("./lib/nebula");
 
-// Construct a schema, using GraphQL schema language
-const typeDefs = gql`
-  type Query {
-    compile(constructs: String!, links: String!, input: String): CompileResponse
-    parse(program: String!): ParseResponse
-  }
-
-  type CompileResponse {
-    program: String
-    stdout: String
-    input: String
-    output: String
-  }
-
-  type ParseResponse {
-    constructs: String
-    links: String
-  }
-`;
-
-// Provide resolver functions for your schema fields
-const resolvers = {
+module.exports.resolvers = {
   Query: {
     compile: (_, { constructs, links, input }) => {
       const program = generateProgram(
@@ -68,16 +45,3 @@ const resolvers = {
     },
   },
 };
-
-const server = new ApolloServer({ typeDefs, resolvers, playground: true });
-
-const app = express();
-server.applyMiddleware({ app });
-
-const port = 5050;
-
-app.listen({ port }, () =>
-  console.log(
-    `🚀 Server ready at http://localhost:${port}${server.graphqlPath}`
-  )
-);
