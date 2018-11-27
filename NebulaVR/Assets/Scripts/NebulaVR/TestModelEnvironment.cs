@@ -8,7 +8,6 @@ public class TestModelEnvironment
 
     public TestModelEnvironment()
     {
-
         var printAccessor = new ModelComponent(ComponentType.Accessor, new Vector3(10, 10, 15));
         var printReturn = new ModelComponent(ComponentType.Return, new Vector3(10, 10, 5));
  
@@ -19,10 +18,7 @@ public class TestModelEnvironment
         };
  
         var print = new ModelBlock(new Vector3(10, 10, 10), printComponents);
-
         me.AddBlock(print);
-        me.AddComponent(printAccessor);
-        me.AddComponent(printReturn);
 
         var originParameter = new ModelComponent(ComponentType.Parameter, new Vector3(0, 0, 5));
         var originReturn = new ModelComponent(ComponentType.Return, new Vector3(0, 0, -5));
@@ -34,11 +30,11 @@ public class TestModelEnvironment
         };
  
         var originBlock = new ModelBlock(new Vector3(0, 0, 0), originComponents, isOrigin: true);
-
+        me.AddBlock(originBlock);
+ 
         // LINKS ARE WIP
         // This might not make sense.
         var link = new ModelLink(new Vector3(10, 10, 5), new Vector3(0, 0, -5));
-
         me.AddLink(link);
     }
 
