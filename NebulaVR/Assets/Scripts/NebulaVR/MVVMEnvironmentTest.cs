@@ -41,6 +41,12 @@ public class MVVMEnvironmentTest : MonoBehaviour {
         Debug.Assert(me.BlocksLength == 1);
     }
 
+    private void DeleteComponentTest()
+    {
+        var addComponent = FindObjectOfType<ViewComponent>();
+        throw new System.NotImplementedException();
+    }
+
     private void ModelInitializationTest()
     {
         Debug.Assert(me.BlocksLength == 2);

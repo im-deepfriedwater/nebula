@@ -9,6 +9,7 @@ public class ModelEnvironment : MonoBehaviour
 {
     HashSet<ModelBlock> blocks = new HashSet<ModelBlock>();
     HashSet<ModelLink> links = new HashSet<ModelLink>();
+    HashSet<ModelComponent> components = new HashSet<ModelComponent>();
 
     public int BlocksLength 
     {
@@ -18,6 +19,11 @@ public class ModelEnvironment : MonoBehaviour
     public int LinksLength
     {
         get { return links.Count;  }
+    }
+
+    public int ComponentsLength
+    {
+        get { return components.Count; }
     }
 
     public void TriggerCompliation()
@@ -34,6 +40,16 @@ public class ModelEnvironment : MonoBehaviour
     public void RemoveBlock(ModelBlock mb)
     {
         blocks.Remove(mb);
+    }
+
+    public void AddComponent(ModelComponent mc)
+    {
+        components.Add(mc);
+    }
+
+    public void RemoveComponent(ModelComponent mc)
+    {
+        components.Remove(mc);
     }
 
     public void AddLink(ModelLink ml)

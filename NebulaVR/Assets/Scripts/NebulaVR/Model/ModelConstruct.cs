@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModelConstruct : MonoBehaviour {
+public abstract class ModelConstruct {
+    private Vector3 position;
+    public Vector3 Position
+    {
+        get
+        {
+            return position;
+        }
+        set
+        {
+            position = value;
+        }
+    }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

@@ -2,21 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModelBlock {
-    private readonly List<ModelComponent> components;
-    private readonly string id;
-    private Vector3 position;
-    public Vector3 Position
-    {
-        set
-        {
-            position = value;
-        }
-    }
+public class ModelBlock: ModelConstruct
+{
+    private readonly HashSet<ModelComponent> components;
+    bool isOrigin;
 
-    public ModelBlock(Vector3 position, List<ModelComponent> components)
+    public ModelBlock(Vector3 position, HashSet<ModelComponent> components, bool isOrigin=false)
     {
-        this.position = position;
+        this.Position = position;
         this.components = components;
+        this.isOrigin = isOrigin;
     }
 }
