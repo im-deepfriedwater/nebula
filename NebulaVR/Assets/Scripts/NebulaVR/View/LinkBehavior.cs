@@ -9,42 +9,45 @@ public class LinkBehavior : MonoBehaviour {
     Vector3 startPos;
     Vector3 endPos;
 
-    void DrawLine(Vector3 start, Vector3 end, Color color, float duration = 0.2f)
-    {
-        GameObject myLine = new GameObject();
-        myLine.transform.position = start;
-        myLine.AddComponent<LineRenderer>();
-        LineRenderer lr = myLine.GetComponent<LineRenderer>();
-        lr.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
-        lr.SetColors(color, color);
-        lr.SetWidth(0.1f, 0.1f);
-        lr.SetPosition(0, start);
-        lr.SetPosition(1, end);
-        Debug.Log("New Line Created!");
-        Debug.Log(start);
-        Debug.Log(end);
-    }
+    GameObject rightHand;
+    GameObject leftHand;
 
+    [SerializeField]
+    GameObject prefabDrawLink;
+    public static List<Linkable> potentialLinkTargets = new List<Linkable>();
+
+    void Start ()
+    {
+        rightHand = GameObject.Find("RightHand");
+        leftHand = GameObject.Find("LeftHand");
+        
+    }
 	void Update () {
-        GameObject rightHand = GameObject.Find("RightHand");
+        
         if (Linkable.colliding)
-            //SEND BOOLEANS OF PRESSDOWN TO LINKABLE TO GET MOST UPDATED POSITIONS
         {
-            if (ViveInput.GetPressDown(HandRole.RightHand, ControllerButton.Grip))
+            if (ViveInput.GetPressDown(HandRole.RightHand, ControllerButton.Grip) || ViveInput.GetPressDown(HandRole.LeftHand, ControllerButton.Grip))
             {
                 startPos = Linkable.position;
-                Debug.Log(Linkable.colliding);
+                Debug.Log("Begin Linking");
             }
 
-            if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Grip))
+            if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Grip) || ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Grip))
             {
                 if (endPos != startPos)
                 {
                     endPos = Linkable.position;
-                    DrawLine(startPos, endPos, Color.yellow);
+
+                    Linkable.colliding = false;
+                    CreateLine();
                 }
             }
-        }
-        
+        } 
+    }
+
+    void CreateLine()
+    {
+        var drawLinkBehaviour = Instantiate(prefabDrawLink).GetComponent<DrawLinkBehaviour>();
+        drawLinkBehaviour.Initialize(startPos, endPos);
     }
 }

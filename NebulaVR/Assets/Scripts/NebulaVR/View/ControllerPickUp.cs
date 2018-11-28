@@ -17,11 +17,12 @@ public class ControllerPickUp : MonoBehaviour
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("please help me find my son");
+
+        Debug.Log("Raycast has hit a game object");
     }
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("vegan hunt");
+        Debug.Log("Raycast is no longer hittng a game object");
     }
     public void OnPointerDown(PointerEventData eventData)
     {

@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+using UnityEngine.Events;
 using HTC.UnityPlugin.ColliderEvent;
+using HTC.UnityPlugin.Vive;
 
 public class Linkable : MonoBehaviour
     , IColliderEventHoverEnterHandler
@@ -14,17 +17,14 @@ public class Linkable : MonoBehaviour
     {
         colliding = true;
         position = this.transform.position;
-        Debug.Log("*hacker voice* im in");
+        LinkBehavior.potentialLinkTargets.Add(this);
     }
 
     public void OnColliderEventHoverExit(ColliderHoverEventData eventData)
     {
+        Debug.Log("grank baybee");
         colliding = false;
-        Debug.Log("we out");
+        position = this.transform.position;
+
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
