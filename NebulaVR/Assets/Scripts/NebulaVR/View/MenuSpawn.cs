@@ -19,7 +19,9 @@ public class MenuSpawn : MonoBehaviour {
     {
 		Vector3 playerPosition = player.transform.position;
 		Vector3 playerDirection = player.transform.forward;
-		transform.position = playerPosition + playerDirection * spawnDistance;
+		Vector3 spawnLocation = playerPosition + playerDirection * spawnDistance;
+		spawnLocation.y = player.transform.position.y;
+		transform.position = spawnLocation;
     }
 	void OnDisable()
     {

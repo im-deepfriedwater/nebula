@@ -1010,7 +1010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 511cbbb2ef044c5468ad10b63b333316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnDistance: 5
+  spawnDistance: 3
   player: {fileID: 1561204401}
 --- !u!114 &1451870979
 MonoBehaviour:
