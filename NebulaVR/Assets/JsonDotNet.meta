@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD:NebulaVR/Assets/Prefabs.meta
 guid: a2f17323fbec3c74fa6405269daa654a
 =======
 guid: a07733bcfaf70461287812c2c2931d79
 >>>>>>> master:NebulaVR/Assets/JsonDotNet.meta
+=======
+guid: a07733bcfaf70461287812c2c2931d79
+>>>>>>> vr-menu
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

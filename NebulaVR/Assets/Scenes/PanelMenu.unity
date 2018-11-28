@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571334, b: 0.3069219, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -250,6 +250,11 @@ MonoBehaviour:
   m_inputs:
   - viveRole:
       m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+      m_roleValueName: LeftHand
+      m_roleValueInt: 1
+    button: 4
+  - viveRole:
+      m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
       m_roleValueName: RightHand
       m_roleValueInt: 0
     button: 4
@@ -261,16 +266,16 @@ MonoBehaviour:
   m_onVirtualClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1451870978}
+        m_MethodName: set_enabled
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
       Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -566,6 +571,7 @@ GameObject:
   - component: {fileID: 1187735121}
   - component: {fileID: 1187735120}
   - component: {fileID: 1187735119}
+  - component: {fileID: 1187735122}
   m_Layer: 5
   m_Name: Mod1
   m_TagString: Untagged
@@ -630,7 +636,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1187735120}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1187735117}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1187735120
@@ -667,6 +684,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1187735117}
   m_CullTransparentMesh: 0
+--- !u!114 &1187735122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1187735117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4984f6dddde00854e8d4e16f7d666276, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1279886138
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,13 +923,16 @@ GameObject:
   - component: {fileID: 1451870974}
   - component: {fileID: 1451870973}
   - component: {fileID: 1451870977}
+  - component: {fileID: 1451870978}
+  - component: {fileID: 1451870979}
+  - component: {fileID: 1451870980}
   m_Layer: 5
   m_Name: NebulaMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1451870973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,7 +997,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1451870972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 1331953664}
@@ -977,7 +1008,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 1}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1451870977
@@ -992,6 +1023,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
+--- !u!114 &1451870978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451870972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511cbbb2ef044c5468ad10b63b333316, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnDistance: 3
+  player: {fileID: 1561204401}
+--- !u!114 &1451870979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451870972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7388f619414942dcb2bb8294e3dd825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1561204401}
+--- !u!114 &1451870980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1451870972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7081bd8f7cc51074d86d8a8e4381924d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button_1: {fileID: 1187735119}
+  button_2: {fileID: 1777999780}
+  button_3: {fileID: 553525202}
+  button_4: {fileID: 1727866178}
+  left: {fileID: 1622509381}
+  right: {fileID: 1279886140}
 --- !u!1 &1463849343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1177,6 +1250,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb3370c18187bb444b240cfb08dcc02f, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1561204401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 116882, guid: cb3370c18187bb444b240cfb08dcc02f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1561204400}
 --- !u!1 &1622509379
 GameObject:
   m_ObjectHideFlags: 0
