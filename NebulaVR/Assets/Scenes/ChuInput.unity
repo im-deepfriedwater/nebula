@@ -309,8 +309,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_mode: 1
   m_viveRole:
-    m_roleTypeFullName: HTC.UnityPlugin.Vive.TrackerRole
-    m_roleValueName: Tracker2
+    m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+    m_roleValueName: RightHand
     m_roleValueInt: 0
   m_origin: {fileID: 0}
   m_deviceIndex: 0
@@ -361,8 +361,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_mode: 1
   m_viveRole:
-    m_roleTypeFullName: HTC.UnityPlugin.Vive.TrackerRole
-    m_roleValueName: Tracker3
+    m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+    m_roleValueName: RightHand
     m_roleValueInt: 0
   m_origin: {fileID: 0}
   m_deviceIndex: 0
@@ -422,8 +422,8 @@ MonoBehaviour:
   rotOffset: {x: 0, y: 0, z: 0}
   origin: {fileID: 0}
   m_viveRole:
-    m_roleTypeFullName: HTC.UnityPlugin.Vive.TrackerRole
-    m_roleValueName: Tracker1
+    m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+    m_roleValueName: RightHand
     m_roleValueInt: 0
   onIsValidChanged:
     m_PersistentCalls:
@@ -444,9 +444,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_viveRole:
-    m_roleTypeFullName: HTC.UnityPlugin.Vive.TrackerRole
-    m_roleValueName: Tracker1
-    m_roleValueInt: 1
+    m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+    m_roleValueName: RightHand
+    m_roleValueInt: 0
 --- !u!1 &693001769
 GameObject:
   m_ObjectHideFlags: 0
@@ -496,8 +496,8 @@ MonoBehaviour:
   rotOffset: {x: 0, y: 0, z: 0}
   origin: {fileID: 0}
   m_viveRole:
-    m_roleTypeFullName: HTC.UnityPlugin.Vive.TrackerRole
-    m_roleValueName: Tracker2
+    m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+    m_roleValueName: RightHand
     m_roleValueInt: 0
   onIsValidChanged:
     m_PersistentCalls:
@@ -518,9 +518,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_viveRole:
-    m_roleTypeFullName: HTC.UnityPlugin.Vive.TrackerRole
-    m_roleValueName: Tracker2
-    m_roleValueInt: 2
+    m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+    m_roleValueName: RightHand
+    m_roleValueInt: 0
 --- !u!4 &888869943
 Transform:
   m_ObjectHideFlags: 0
@@ -685,6 +685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04742679d8236db44a1c74011ea3cd9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabDrawLink: {fileID: 1358730011843616, guid: e56bb970ed96c1a4e83f225b586b826e,
+    type: 2}
 --- !u!1 &1175185424
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +760,7 @@ MonoBehaviour:
   m_viveRole:
     m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
     m_roleValueName: LeftHand
-    m_roleValueInt: 0
+    m_roleValueInt: 1
 --- !u!1 &1239920901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,8 +1142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_mode: 1
   m_viveRole:
-    m_roleTypeFullName: HTC.UnityPlugin.Vive.TrackerRole
-    m_roleValueName: Tracker1
+    m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+    m_roleValueName: RightHand
     m_roleValueInt: 0
   m_origin: {fileID: 0}
   m_deviceIndex: 0
@@ -1376,8 +1378,8 @@ MonoBehaviour:
   rotOffset: {x: 0, y: 0, z: 0}
   origin: {fileID: 0}
   m_viveRole:
-    m_roleTypeFullName: HTC.UnityPlugin.Vive.TrackerRole
-    m_roleValueName: Tracker3
+    m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+    m_roleValueName: RightHand
     m_roleValueInt: 0
   onIsValidChanged:
     m_PersistentCalls:
@@ -1398,9 +1400,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_viveRole:
-    m_roleTypeFullName: HTC.UnityPlugin.Vive.TrackerRole
-    m_roleValueName: Tracker3
-    m_roleValueInt: 3
+    m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+    m_roleValueName: RightHand
+    m_roleValueInt: 0
 --- !u!1 &1732569983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,10 +1508,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f753025abc16bb45bbc83939f863bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1820292174}
-  pivot: {fileID: 888869943}
+  target: {fileID: 0}
+  pivot: {fileID: 0}
   fadeDuration: 0.3
-  m_reticleMaterial: {fileID: 2100000, guid: 3320905fb6f6bd54297f26399d87c525, type: 2}
+  m_reticleMaterial: {fileID: 0}
   teleportButton: 1
 --- !u!1 &1820292173
 GameObject:

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using HTC.UnityPlugin.ColliderEvent;
+using HTC.UnityPlugin.Vive;
 
 public class Linkable : MonoBehaviour
     , IColliderEventHoverEnterHandler
@@ -12,12 +14,16 @@ public class Linkable : MonoBehaviour
 
     public void OnColliderEventHoverEnter(ColliderHoverEventData eventData)
     {
-        this.colliding = true;
+        colliding = true;
         position = this.transform.position;
+        LinkBehavior.potentialLinkTargets.Add(this);
     }
 
     public void OnColliderEventHoverExit(ColliderHoverEventData eventData)
     {
-        this.colliding = false;
+        Debug.Log("grank baybee");
+        colliding = false;
+        position = this.transform.position;
+
     }
 }
