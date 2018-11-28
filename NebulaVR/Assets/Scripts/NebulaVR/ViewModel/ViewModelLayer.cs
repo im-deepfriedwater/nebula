@@ -46,12 +46,13 @@ public class ViewModelLayer : MonoBehaviour
 
     public ModelBlock ConvertViewBlockToModelBlock(GameObject gameObjectViewBlock)
     {
-        List<ModelComponent> modelComponents = new List<ModelComponent>();
-        Vector3 viewPosition = gameObjectViewBlock.transform.position; 
+        HashSet<ModelComponent> modelComponents = new HashSet<ModelComponent>();
+        Vector3 viewPosition = gameObjectViewBlock.transform.position;
+        string viewName = gameObjectViewBlock.GetComponent<ViewBlock>().id;
         foreach (ViewComponent vc in gameObjectViewBlock.GetComponentsInChildren<ViewComponent>())
         {
             modelComponents.Add(new ModelComponent(vc.componentType, vc.Position));
-        } // TODO should components have references to their parents?
-        return new ModelBlock(viewPosition, modelComponents);
+        }
+        return new ModelBlock(viewPosition, modelComponents, viewName);
     }
 }

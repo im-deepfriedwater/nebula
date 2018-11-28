@@ -17,7 +17,7 @@ public class TestModelEnvironment
             printReturn
         };
  
-        var print = new ModelBlock(new Vector3(10, 10, 10), printComponents);
+        var print = new ModelBlock(new Vector3(10, 10, 10), printComponents, "print");
         me.AddBlock(print);
 
         var originParameter = new ModelComponent(ComponentType.Parameter, new Vector3(0, 0, 5));
@@ -29,7 +29,7 @@ public class TestModelEnvironment
             originReturn
         };
  
-        var originBlock = new ModelBlock(new Vector3(0, 0, 0), originComponents, isOrigin: true);
+        var originBlock = new ModelBlock(new Vector3(0, 0, 0), originComponents, "origin", isOrigin: true);
         me.AddBlock(originBlock);
  
         // LINKS ARE WIP

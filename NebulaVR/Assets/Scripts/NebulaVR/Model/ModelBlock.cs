@@ -11,10 +11,11 @@ public class ModelBlock : ModelConstruct
   }
   public bool isOrigin;
 
-  public ModelBlock(Vector3 position, HashSet<ModelComponent> components, bool isOrigin = false)
+  public ModelBlock(Vector3 position, HashSet<ModelComponent> components, string id, bool isOrigin = false)
   {
-    this.position = position;
+    this.Position = position;
     this.components = components;
+    this.Id = id;
     this.isOrigin = isOrigin;
   }
 }

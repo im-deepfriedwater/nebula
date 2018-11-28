@@ -15,13 +15,7 @@ public class Binding
         this.vb = vb;
         this.mb = mb;
         environmentChanged = viewModelEvent;
-
         components = new Dictionary<ViewComponent, ModelComponent>();
-
-        foreach (ViewComponent in vb.components)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 
     public void PropagateChange()
