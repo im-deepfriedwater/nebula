@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class AllButtonsMockScript : MonoBehaviour {
 
+    public GameObject addFunctionPrefab;
 	public Button button_1, button_2, button_3, button_4, left, right;
 	// Use this for initialization
 	void Start () {
@@ -18,7 +19,7 @@ public class AllButtonsMockScript : MonoBehaviour {
 	
 
 	void TaskOnClick1(){
-		Debug.Log("Button 1 clicked!");
+        Instantiate(addFunctionPrefab, new Vector3(0, 0, 0), Quaternion.identity);
 	}
 
 	void TaskOnClick2(){
