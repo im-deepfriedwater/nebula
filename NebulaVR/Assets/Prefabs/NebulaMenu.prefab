@@ -240,7 +240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1808564615055620
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7081bd8f7cc51074d86d8a8e4381924d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  addFunctionPrefab: {fileID: 0}
   button_1: {fileID: 114649520427076922}
   button_2: {fileID: 114016905465575788}
   button_3: {fileID: 114696744744163422}
