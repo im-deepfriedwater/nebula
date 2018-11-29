@@ -150,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 475840, guid: 2b3a4efa04a7cf2428e0835b20f15fdc, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3a4efa04a7cf2428e0835b20f15fdc, type: 2}
@@ -563,6 +563,7 @@ Transform:
   m_Children:
   - {fileID: 1452244506}
   - {fileID: 415038529}
+  - {fileID: 1596085353}
   - {fileID: 1990426406}
   m_Father: {fileID: 1820292174}
   m_RootOrder: 0
@@ -896,6 +897,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa495dbcddd9e64893fa6b569ecd915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1275880991
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 892193489}
+    m_Modifications:
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &1295158739
 Prefab:
   m_ObjectHideFlags: 0
@@ -1403,6 +1446,73 @@ MonoBehaviour:
     m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
     m_roleValueName: RightHand
     m_roleValueInt: 0
+--- !u!1 &1596085352 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 152968, guid: 12ee41758a687f54e98120e486ccd16e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1275880991}
+--- !u!4 &1596085353 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1275880991}
+--- !u!114 &1596085354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1596085352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ab9066e8186884da64ee239717c741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_combineInputsOperator: 0
+  m_inputs:
+  - viveRole:
+      m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+      m_roleValueName: LeftHand
+      m_roleValueInt: 1
+    button: 4
+  - viveRole:
+      m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
+      m_roleValueName: RightHand
+      m_roleValueInt: 0
+    button: 4
+  m_onVirtualPress:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualPressDown:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualPressUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_toggleGameObjectOnVirtualClick:
+  - {fileID: 0}
+  m_toggleComponentOnVirtualClick: []
 --- !u!1001 &1624487761
 Prefab:
   m_ObjectHideFlags: 0
@@ -1506,6 +1616,38 @@ Prefab:
       value: 
       objectReference: {fileID: 1929890206885278, guid: 1c7787ec2e2957243a693025a12b9227,
         type: 2}
+    - target: {fileID: 114273093780723014, guid: 571a9546069e1384795183da93d9c649,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1510992508}
+    - target: {fileID: 114918940814938098, guid: 571a9546069e1384795183da93d9c649,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1510992508}
+    - target: {fileID: 114594515246442528, guid: 571a9546069e1384795183da93d9c649,
+        type: 2}
+      propertyPath: m_Text
+      value: Add Function Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 114677429613826484, guid: 571a9546069e1384795183da93d9c649,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Print Function Block
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 114015823734555650, guid: 571a9546069e1384795183da93d9c649,
+        type: 2}
+      propertyPath: m_Text
+      value: Subtract Function Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 114770176791928440, guid: 571a9546069e1384795183da93d9c649,
+        type: 2}
+      propertyPath: m_Text
+      value: Multiply Function Block
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 571a9546069e1384795183da93d9c649, type: 2}
   m_IsPrefabAsset: 0

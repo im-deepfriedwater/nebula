@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class AllButtonsMockScript : MonoBehaviour {
 
     public GameObject addFunctionPrefab;
+    [SerializeField]
+    public GameObject fakeTextOutput;
 	public Button button_1, button_2, button_3, button_4, left, right;
 	// Use this for initialization
 	void Start () {
@@ -19,11 +21,11 @@ public class AllButtonsMockScript : MonoBehaviour {
 	
 
 	void TaskOnClick1(){
-        Instantiate(addFunctionPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Instantiate(addFunctionPrefab, new Vector3(-2, 0, -2), Quaternion.identity);
 	}
 
 	void TaskOnClick2(){
-		Debug.Log("Button 2 clicked!");
+        fakeTextOutput.SetActive(true);
 	}
 
 	void TaskOnClick3(){
