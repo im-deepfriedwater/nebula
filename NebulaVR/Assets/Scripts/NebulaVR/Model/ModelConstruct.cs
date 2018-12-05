@@ -14,7 +14,7 @@ public abstract class ModelConstruct {
 
         set
         {
-            Id = id;
+            id = Id;
         }
     }
     private Vector3 position;

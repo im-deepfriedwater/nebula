@@ -9,7 +9,7 @@ public class ModelEnvironment : MonoBehaviour
 {
     HashSet<ModelBlock> blocks = new HashSet<ModelBlock>();
     HashSet<ModelLink> links = new HashSet<ModelLink>();
-    HashSet<ModelComponent> components = new HashSet<ModelComponent>();
+    public HashSet<ModelComponent> components = new HashSet<ModelComponent>();
 
     public int BlocksLength 
     {

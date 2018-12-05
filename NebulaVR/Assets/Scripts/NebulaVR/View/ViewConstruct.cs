@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class ViewConstruct: MonoBehaviour
 {
-    public Binding binding;
     public Vector3 Position
     {
         get { return gameObject.transform.position; }

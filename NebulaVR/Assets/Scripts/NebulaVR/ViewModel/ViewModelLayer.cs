@@ -9,6 +9,8 @@ public class ViewModelLayer : MonoBehaviour
     public ModelEnvironment me;
     private Vector3 defaultPosition = new Vector3(0, 0, 0);
     private readonly HashSet<Binding> bindings = new HashSet<Binding>();
+    private readonly HashSet<ComponentBinding> componentBindings = new HashSet<ComponentBinding>();
+    private readonly HashSet<LinkBinding> linkBindings = new HashSet<LinkBinding>();
     private readonly UnityEvent environmentChanged = new UnityEvent();
 
     public void Start()
@@ -18,7 +20,6 @@ public class ViewModelLayer : MonoBehaviour
 
     private void Test()
     {
-        Debug.Log("Lol");
         //me.TriggerCompliation();
     }
 
@@ -29,8 +30,42 @@ public class ViewModelLayer : MonoBehaviour
 
     public void Delete(Binding binding)
     {
+        foreach (ViewComponent vc in binding.vb.GetComponentsInChildren<ViewComponent>())
+        {
+            componentBindings.Remove(vc.binding);
+            vc.Delete();
+        }
+
+        var listToDeleteComponent = new List<ModelComponent>();
+        foreach (ModelComponent mc in binding.mb.Components)
+        {
+            me.RemoveComponent(mc);
+            listToDeleteComponent.Add(mc);
+        }
+
+        foreach (ModelComponent mc in listToDeleteComponent)
+        {
+            mc.Delete();
+        }
+
         binding.DeleteFromViewAndModel(me);
         bindings.Remove(binding);
+    }
+
+    public void DeleteComponent(ComponentBinding binding)
+    {
+        binding.DeleteFromViewAndModel(me);
+        componentBindings.Remove(binding);
+        me.RemoveComponent(binding.mc);
+    }
+
+    public void ConstructAndBindViewLink(Vector3 to, Vector3 from)
+    {   
+        var gameObjectLink = Instantiate(viewBlockPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        var viewLink = gameObjectLink.GetComponent<ViewLink>();
+        var modelLink = new ModelLink(to, from);
+        var linkBinding = new LinkBinding(viewLink, modelLink, environmentChanged);
+        viewLink.Initialize(to, from, linkBinding);
     }
 
     public void ConstructAndBindViewBlock(Vector3 position, PremadeBlock blockType)
@@ -44,15 +79,30 @@ public class ViewModelLayer : MonoBehaviour
         bindings.Add(binding);
     }
 
+    public void ConstructAndBindViewComponent(ViewComponent vc, ModelBlock parent)
+    {
+        var modelPosition = new Vector3(vc.Position.x, vc.Position.y, vc.Position.z);
+        var mc = new ModelComponent(vc.componentType, modelPosition, parent);
+        var binding = new ComponentBinding(vc, mc, environmentChanged);
+        me.AddComponent(mc);
+    }
+
     public ModelBlock ConvertViewBlockToModelBlock(GameObject gameObjectViewBlock)
     {
         HashSet<ModelComponent> modelComponents = new HashSet<ModelComponent>();
         Vector3 viewPosition = gameObjectViewBlock.transform.position;
         string viewName = gameObjectViewBlock.GetComponent<ViewBlock>().id;
+        var resultModelBlock = new ModelBlock(viewPosition, modelComponents, viewName);
         foreach (ViewComponent vc in gameObjectViewBlock.GetComponentsInChildren<ViewComponent>())
-        {
-            modelComponents.Add(new ModelComponent(vc.componentType, vc.Position));
+        {    
+            var mc = new ModelComponent(vc.componentType, vc.Position, resultModelBlock);
+            var binding = new ComponentBinding(vc, mc, environmentChanged);
+            vc.Initialize(gameObjectViewBlock.GetComponent<ViewBlock>(), binding);
+            modelComponents.Add(mc);
+            componentBindings.Add(binding);
+            me.AddComponent(mc);
         }
-        return new ModelBlock(viewPosition, modelComponents, viewName);
+
+        return resultModelBlock;
     }
 }
