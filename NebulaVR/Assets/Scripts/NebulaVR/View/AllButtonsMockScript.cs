@@ -5,44 +5,82 @@ using UnityEngine.UI;
 
 public class AllButtonsMockScript : MonoBehaviour {
 
-	public Button button_1, button_2, button_3, button_4, left, right;
+	public Button button_0, button_1, button_2, button_3, button_4, button_5, 
+           button_6, button_7, button_8, button_9, button_hello, button_clear;
+    public static string typed;
 	// Use this for initialization
 	void Start () {
-		button_1.onClick.AddListener(TaskOnClick1);
+        button_0.onClick.AddListener(TaskOnClick0);
+        button_1.onClick.AddListener(TaskOnClick1);
 		button_2.onClick.AddListener(TaskOnClick2);
 		button_3.onClick.AddListener(TaskOnClick3);
 		button_4.onClick.AddListener(TaskOnClick4);
-		left.onClick.AddListener(TaskOnClickLeft);
-		right.onClick.AddListener(TaskOnClickRight);
-	}
-	
-
-	void TaskOnClick1(){
-		Debug.Log("Button 1 clicked!");
-	}
-
-	void TaskOnClick2(){
-		Debug.Log("Button 2 clicked!");
+		button_5.onClick.AddListener(TaskOnClick5);
+        button_6.onClick.AddListener(TaskOnClick6);
+        button_7.onClick.AddListener(TaskOnClick7);
+        button_8.onClick.AddListener(TaskOnClick8);
+        button_9.onClick.AddListener(TaskOnClick9);
+        button_hello.onClick.AddListener(TaskOnClickHello);
+        button_clear.onClick.AddListener(TaskOnClickClear);
+        typed = "";
 	}
 
-	void TaskOnClick3(){
-		Debug.Log("Button 3 clicked!");
+    void TaskOnClick0()
+    {
+        typed += "0";
+    }
+
+    void TaskOnClick1(){
+        typed += "1";
+    }
+
+    void TaskOnClick2(){
+        typed += "2";
 	}
 
-	void TaskOnClick4(){
-		Debug.Log("Button 4 clicked!");
+	void TaskOnClick3()
+    {
+        typed += "3";
 	}
 
-	void TaskOnClickLeft(){
-		Debug.Log("Go Left");
-	}
-	
-	void TaskOnClickRight(){
-		Debug.Log("Go Right");
+	void TaskOnClick4()
+    {
+        typed += "4";
 	}
 
-	// Update is called once per frame
-	void Update () {
+	void TaskOnClick5()
+    {
+        typed += "5";
+	}
+    void TaskOnClick6()
+    {
+        typed += "6";
+    }
+    void TaskOnClick7()
+    {
+        typed += "7";
+    }
+    void TaskOnClick8()
+    {
+        typed += "8";
+    }
+    void TaskOnClick9()
+    {
+        typed += "9";
+    }
+    void TaskOnClickHello()
+    {
+        typed = "Hello, World!";
+    }
+    void TaskOnClickClear()
+    {
+        typed = "";
+    }
+
+
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }
