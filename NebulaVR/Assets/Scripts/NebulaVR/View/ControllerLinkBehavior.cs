@@ -23,9 +23,8 @@ public class ControllerLinkBehavior : MonoBehaviour
             }
             else
             {
-                drawLine();
+                DrawLine();
             }
-
         }
     }  
 
@@ -39,7 +38,7 @@ public class ControllerLinkBehavior : MonoBehaviour
         second = first;
     }
 
-    void drawLine()
+    void DrawLine()
     {
         var drawLinkBehaviour = Instantiate(prefabDrawLink).GetComponent<DrawLinkBehaviour>();
         drawLinkBehaviour.Initialize(first, second);
