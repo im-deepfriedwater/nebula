@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 using HTC.UnityPlugin.Vive;
 using HTC.UnityPlugin.ColliderEvent;
 
-public class LinkBehavior : MonoBehaviour {
+public class LinkBehavior : MonoBehaviour
+{
     Vector3 startPos;
     Vector3 endPos;
 
@@ -16,14 +17,15 @@ public class LinkBehavior : MonoBehaviour {
     GameObject prefabDrawLink;
     public static List<Linkable> potentialLinkTargets = new List<Linkable>();
 
-    void Start ()
+    void Start()
     {
         rightHand = GameObject.Find("RightHand");
         leftHand = GameObject.Find("LeftHand");
-        
+
     }
-	void Update () {
-        
+
+    void Update()
+    {
         if (Linkable.colliding)
         {
             if (ViveInput.GetPressDown(HandRole.RightHand, ControllerButton.Grip) || ViveInput.GetPressDown(HandRole.LeftHand, ControllerButton.Grip))
@@ -31,18 +33,16 @@ public class LinkBehavior : MonoBehaviour {
                 startPos = Linkable.position;
                 Debug.Log("Begin Linking");
             }
-
             if (ViveInput.GetPressUp(HandRole.RightHand, ControllerButton.Grip) || ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Grip))
             {
                 if (endPos != startPos)
                 {
                     endPos = Linkable.position;
-
                     Linkable.colliding = false;
                     CreateLine();
                 }
             }
-        } 
+        }
     }
 
     void CreateLine()

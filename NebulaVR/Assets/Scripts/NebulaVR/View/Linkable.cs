@@ -25,6 +25,5 @@ public class Linkable : MonoBehaviour
         Debug.Log("grank baybee");
         colliding = false;
         position = this.transform.position;
-
     }
 }
