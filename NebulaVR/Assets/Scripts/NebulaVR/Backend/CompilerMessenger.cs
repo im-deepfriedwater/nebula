@@ -52,21 +52,56 @@ public class CompilerMessenger : MonoBehaviour
   {
     GraphQuery.onQueryComplete -= DisplayResult;
   }
-}
 
-
-class Position
-{
-  public int x;
-  public int y;
-  public Position(int x, int y)
+  public static Construct[] ConvertModelBlocksToDSConstructs(HashSet<ModelBlock> blocks)
   {
-    this.x = x;
-    this.y = y;
+    Construct[] result = new Construct[] { };
+    foreach (ModelBlock block in blocks)
+    {
+      Construct[] children = new Construct[] { };
+      foreach (ModelComponent component in block.Components)
+      {
+        string childName = component.ComponentType.ToString();
+        Position childPos = new Position(component.Position.x, component.Position.y, component.Position.z);
+        ConstructInfo childInfo = new ConstructInfo();
+        Construct child = new Construct(childName, new Construct[] { }, childPos, childInfo);
+      }
+      string name = block.isOrigin ? ComponentType.Origin.ToString() : ComponentType.Function.ToString();
+      Position pos = new Position(block.Position.x, block.Position.y, block.Position.z);
+      ConstructInfo info = new ConstructInfo();
+      Construct construct = new Construct(name, children, pos, info);
+    }
+    return result;
+  }
+
+  public static Link[] ConvertModelLinksToDSLinks(HashSet<ModelLink> links)
+  {
+    Link[] result = new Link[] { };
+    foreach (ModelLink link in links)
+    {
+      Position from = new Position(link.from.x, link.from.y, link.from.z);
+      Position to = new Position(link.to.x, link.to.y, link.to.z);
+      Link newLink = new Link(from, to);
+    }
+    return result;
   }
 }
 
-class ConstructInfo
+
+public class Position
+{
+  public float x;
+  public float y;
+  public float z;
+  public Position(float x = 0, float y = 0, float z = 0)
+  {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+}
+
+public class ConstructInfo
 {
   public bool @default;
   public string id;
@@ -81,7 +116,7 @@ class ConstructInfo
   }
 }
 
-class Construct
+public class Construct
 {
   public string name;
   public Construct[] children;
@@ -97,7 +132,7 @@ class Construct
   }
 }
 
-class Link
+public class Link
 {
   public Position from;
   public Position to;
