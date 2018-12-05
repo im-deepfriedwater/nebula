@@ -19,7 +19,7 @@ public class ControllerLinkBehavior : MonoBehaviour
         {
             if (first.tag == "Untagged" || second.tag == "Untagged")
             {
-                Debug.Log("One of the parents is not accepting any more links.");
+                Debug.Log("One or both of the parents is not accepting any more links.");
             }
             else
             {
