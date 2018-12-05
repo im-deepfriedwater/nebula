@@ -76,11 +76,4 @@ public class AllButtonsMockScript : MonoBehaviour {
     {
         typed = "";
     }
-
-
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
 }
