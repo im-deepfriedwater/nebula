@@ -6,13 +6,11 @@ public class MenuSpawn : MonoBehaviour {
 	public float spawnDistance;
 	public GameObject player;
 	
-	void Start() {
+	void Start() 
+	{
 		Vector3 playerPosition = player.transform.position;
 		Vector3 playerDirection = player.transform.forward;
 		transform.position = playerPosition + playerDirection * spawnDistance;
-	}
-
-	void Update() {
 	}
 
 	void OnEnable()
@@ -23,8 +21,4 @@ public class MenuSpawn : MonoBehaviour {
 		spawnLocation.y = player.transform.position.y;
 		transform.position = spawnLocation;
     }
-	void OnDisable()
-    {
-    }
-	
 }
