@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using HTC.UnityPlugin.Vive;
 
-public class LeftControllerBehavior : MonoBehaviour
+public class ControllerLinkBehavior : MonoBehaviour
 {
     [SerializeField]
     GameObject prefabDrawLink;
+    [SerializeField]
+    HandRole selectedHand;
 
     GameObject first;
     GameObject second;
-
-    void Update()
+	
+	void Update()
     {
-        if (ViveInput.GetPressUp(HandRole.LeftHand, ControllerButton.Grip) && first != second)
+        if (ViveInput.GetPressUp(selectedHand, ControllerButton.Grip) && first != second)
         {
             if (first.tag == "Untagged" || second.tag == "Untagged")
             {
@@ -23,8 +25,9 @@ public class LeftControllerBehavior : MonoBehaviour
             {
                 drawLine();
             }
+
         }
-    }
+    }  
 
     void OnTriggerEnter(Collider c)
     {
