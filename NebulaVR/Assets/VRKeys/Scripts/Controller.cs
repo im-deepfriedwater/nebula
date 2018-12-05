@@ -17,9 +17,6 @@ namespace VRKeys {
 	/// </summary>
 	public class Controller : MonoBehaviour {
 
-		private void Start () {
-		}
-
 		public virtual void TriggerPulse () {
 			// Override me!
 		}
