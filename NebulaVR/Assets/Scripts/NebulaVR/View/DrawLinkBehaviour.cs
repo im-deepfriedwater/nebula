@@ -6,22 +6,26 @@ public class DrawLinkBehaviour : MonoBehaviour {
     [SerializeField]
     Color currentColor;
     LineRenderer lr;
+    GameObject mom;
+    GameObject dad;
 
-    void UpdateLine(Vector3 start, Vector3 end)
+    void Update()
     {
-        lr.SetPosition(0, start);
-        lr.SetPosition(1, end);
+        lr.SetPosition(0, mom.transform.position);
+        lr.SetPosition(1, dad.transform.position);
     }
 
-    public void Initialize(Vector3 start, Vector3 end)
+    public void Initialize(GameObject start, GameObject end)
     {
+        mom = start;
+        dad = end;
         lr = GetComponent<LineRenderer>();
         lr.material = new Material(Shader.Find("Particles/Alpha Blended Premultiply"));
-        lr.SetWidth(0.1f, 0.1f);
+        lr.startWidth = 0.1f;
         lr.startColor = currentColor;
         lr.endColor = currentColor;
-        this.transform.position = start;
-        lr.SetPosition(0, start);
-        lr.SetPosition(1, end);
+        lr.SetPosition(0, start.transform.position);
+        lr.SetPosition(1, end.transform.position);
+        Debug.Log("Drawing new line at " + start.transform.position + " " + end.transform.position);
     }
 }
