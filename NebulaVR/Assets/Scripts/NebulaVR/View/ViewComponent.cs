@@ -15,6 +15,7 @@ public class ViewComponent: ViewConstruct
     public ComponentBinding binding;
     [SerializeField]
     public ComponentType componentType;
+    public int InitializeValue;
 
     public void Initialize(ViewBlock parent, ComponentBinding binding)
     {

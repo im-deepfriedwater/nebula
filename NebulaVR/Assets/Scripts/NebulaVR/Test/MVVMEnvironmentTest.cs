@@ -49,9 +49,7 @@ public class MVVMEnvironmentTest : MonoBehaviour {
         Debug.Assert(me.ComponentsLength == 3);
         var addComponent = FindObjectOfType<ViewComponent>().GetComponent<ViewComponent>();
         Debug.Log(me.components.Contains(addComponent.binding.mc));
-
         vml.DeleteComponent(addComponent.binding);
-
     }
 
     private void ModelInitializationTest()

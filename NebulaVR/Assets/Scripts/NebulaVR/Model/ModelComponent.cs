@@ -6,6 +6,7 @@ public class ModelComponent : ModelConstruct
 {
     private readonly ComponentType componentType;
     private readonly ModelBlock parent;
+    public int InitializeValue;
     public ComponentType ComponentType
     {
         get { return componentType; }
