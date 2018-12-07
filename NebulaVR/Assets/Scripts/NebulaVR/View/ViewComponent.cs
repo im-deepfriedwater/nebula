@@ -15,10 +15,12 @@ public class ViewComponent : ViewConstruct
 
   // Internal Value that is used to determine the starting value 
   // for Parameters without an entering Link. Default value is null.
-  int? initializeValue;
+  private int? initializeValue;
+
   public int? InitializeValue
   {
     get { return initializeValue; }
+    set { initializeValue = value; }
   }
 
   public ComponentBinding binding;
@@ -29,7 +31,7 @@ public class ViewComponent : ViewConstruct
   {
     this.parent = parent;
     this.binding = binding;
-    this.initializeValue = null;
+    this.initializeValue = 3;
   }
 
   // Should be called by the controller when a component is moved.
