@@ -5,7 +5,8 @@ using UnityEngine;
 public class ViewBlock : ViewConstruct
 {   
     [SerializeField]
-    private readonly string id;
+    public readonly string id;
+    public Binding binding;
 
     public void Initialize(Binding binding)
     {

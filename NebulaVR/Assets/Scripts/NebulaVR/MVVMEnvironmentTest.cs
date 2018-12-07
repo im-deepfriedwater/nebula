@@ -10,6 +10,9 @@ public class MVVMEnvironmentTest : MonoBehaviour {
     ViewModelLayer vml;
 
     [SerializeField]
+    GameObject tl;
+
+    [SerializeField]
     ModelEnvironment me;
 
     public void SpawnBlock()
@@ -26,7 +29,6 @@ public class MVVMEnvironmentTest : MonoBehaviour {
 
     private void MoveBlockTest()
     {
-        Debug.Log("Trying to add");
         var addBlock = FindObjectOfType<ViewBlock>();
         addBlock.transform.position = new Vector3(10, 0, 10);
         addBlock.GetComponent<ViewBlock>().SignifyChange();
@@ -34,17 +36,22 @@ public class MVVMEnvironmentTest : MonoBehaviour {
 
     private void DeleteBlockTest()
     {
-        Debug.Log("Trying to delete");
         var addBlock = FindObjectOfType<ViewBlock>();
+
         vml.Delete(addBlock.binding);
-        addBlock.Delete();
+
         Debug.Assert(me.BlocksLength == 1);
+        Debug.Assert(me.ComponentsLength == 3);
     }
 
     private void DeleteComponentTest()
     {
-        var addComponent = FindObjectOfType<ViewComponent>();
-        throw new System.NotImplementedException();
+        Debug.Assert(me.ComponentsLength == 3);
+        var addComponent = FindObjectOfType<ViewComponent>().GetComponent<ViewComponent>();
+        Debug.Log(me.components.Contains(addComponent.binding.mc));
+
+        vml.DeleteComponent(addComponent.binding);
+
     }
 
     private void ModelInitializationTest()
@@ -59,5 +66,6 @@ public class MVVMEnvironmentTest : MonoBehaviour {
         ModelInitializationTest();
         MoveBlockTest();
         DeleteBlockTest();
+        DeleteComponentTest();
     }
 }

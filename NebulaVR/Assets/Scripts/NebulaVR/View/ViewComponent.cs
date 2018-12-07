@@ -12,13 +12,14 @@ public class ViewComponent: ViewConstruct
     ViewBlock parent;
     Vector3 internalPosition; // NOTE: This is relative to the parent.
     ViewLink link;
+    public ComponentBinding binding;
+    [SerializeField]
+    public ComponentType componentType;
 
-    public readonly ComponentType componentType;
-
-
-    public void Initialize(ViewBlock parent)
+    public void Initialize(ViewBlock parent, ComponentBinding binding)
     {
         this.parent = parent;
+        this.binding = binding;
     }
 
     // Should be called by the controller when a component is moved.
@@ -41,7 +42,7 @@ public class ViewComponent: ViewConstruct
 
     public override void Delete()
     {
-        throw new System.NotImplementedException();
+        Destroy(this);
     }
 }
 
@@ -51,5 +52,6 @@ public enum ComponentType
     Function,
     Accessor,
     Return,
-    Parameter
+    Parameter,
+    Input
 }

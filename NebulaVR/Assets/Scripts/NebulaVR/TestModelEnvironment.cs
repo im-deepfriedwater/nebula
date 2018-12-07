@@ -8,28 +8,20 @@ public class TestModelEnvironment
 
     public TestModelEnvironment()
     {
-        var printAccessor = new ModelComponent(ComponentType.Accessor, new Vector3(10, 10, 15));
-        var printReturn = new ModelComponent(ComponentType.Return, new Vector3(10, 10, 5));
- 
-        var printComponents = new HashSet<ModelComponent>
-        {
-            printAccessor,
-            printReturn
-        };
- 
-        var print = new ModelBlock(new Vector3(10, 10, 10), printComponents);
+        var printComponents = new HashSet<ModelComponent>();
+        var print = new ModelBlock(new Vector3(10, 10, 10), printComponents, "print");
+        var printAccessor = new ModelComponent(ComponentType.Accessor, new Vector3(10, 10, 15), print);
+        var printReturn = new ModelComponent(ComponentType.Return, new Vector3(10, 10, 5), print);
+        printComponents.Add(printAccessor);
+        printComponents.Add(printReturn);
         me.AddBlock(print);
 
-        var originParameter = new ModelComponent(ComponentType.Parameter, new Vector3(0, 0, 5));
-        var originReturn = new ModelComponent(ComponentType.Return, new Vector3(0, 0, -5));
-
-        var originComponents = new HashSet<ModelComponent>
-        {
-            originParameter,
-            originReturn
-        };
- 
-        var originBlock = new ModelBlock(new Vector3(0, 0, 0), originComponents, isOrigin: true);
+        var originComponents = new HashSet<ModelComponent>();
+        var originBlock = new ModelBlock(new Vector3(0, 0, 0), originComponents, "origin", isOrigin: true);
+        var originParameter = new ModelComponent(ComponentType.Parameter, new Vector3(0, 0, 5), originBlock);
+        var originReturn = new ModelComponent(ComponentType.Return, new Vector3(0, 0, -5), originBlock);
+        originComponents.Add(originParameter);
+        originComponents.Add(originReturn);
         me.AddBlock(originBlock);
  
         // LINKS ARE WIP
