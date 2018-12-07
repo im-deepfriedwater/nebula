@@ -1,4 +1,5 @@
 ﻿using UnityEngine.Events;
+using UnityEngine;
 
 public class ComponentBinding
 {
@@ -15,12 +16,13 @@ public class ComponentBinding
 
     public void PropagateChange()
     {
+        mc.Position = new Vector3(vc.Position.x, vc.Position.y, vc.Position.z);
         this.environmentChanged.Invoke();
     }
 
     public void DeleteFromViewAndModel(ModelEnvironment me)
     {
-        this.vc.Delete();
+        vc.Delete();
         me.RemoveComponent(mc);
     }
 }

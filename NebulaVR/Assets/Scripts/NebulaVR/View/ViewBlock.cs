@@ -21,6 +21,10 @@ public class ViewBlock : ViewConstruct
 
     public override void Delete()
     {
-        Object.Destroy(this.gameObject);
+        foreach (ViewComponent vc in gameObject.GetComponentsInChildren<ViewComponent>())
+        {
+            vc.Delete();
+        }
+        Destroy(this.gameObject);
     }
 }
