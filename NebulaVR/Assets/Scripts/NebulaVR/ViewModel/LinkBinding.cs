@@ -1,4 +1,5 @@
 ﻿using UnityEngine.Events;
+using UnityEngine;
 
 public class LinkBinding {
 
@@ -15,7 +16,9 @@ public class LinkBinding {
 
     public void PropagateChange()
     {
-        this.environmentChanged.Invoke();
+        ml.to = new Vector3(vl.to.x, vl.to.y, vl.to.z);
+        ml.from = new Vector3(vl.from.x, vl.from.y, vl.from.z);
+        environmentChanged.Invoke();
     }
 
     public void DeleteFromViewAndModel(ModelEnvironment me)
