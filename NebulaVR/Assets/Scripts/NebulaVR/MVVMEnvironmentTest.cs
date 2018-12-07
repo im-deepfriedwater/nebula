@@ -15,7 +15,6 @@ public class MVVMEnvironmentTest : MonoBehaviour {
     [SerializeField]
     ModelEnvironment me;
 
-    public ViewBlock ohman;
     public void SpawnBlock()
     {
         vml.ConstructAndBindViewBlock(new Vector3(0, 0, 0), PremadeBlock.AddFunction);
@@ -90,6 +89,7 @@ public class MVVMEnvironmentTest : MonoBehaviour {
 
     private void TestLinkCreation()
     {
+        var testLink = GameObject
         throw new System.NotImplementedException();
     }
 
