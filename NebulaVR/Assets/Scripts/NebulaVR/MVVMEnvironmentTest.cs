@@ -88,6 +88,16 @@ public class MVVMEnvironmentTest : MonoBehaviour {
         Debug.Assert(me.LinksLength == 0);
     }
 
+    private void TestLinkCreation()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void TestLinkPropagateChange()
+    {
+        throw new System.NotImplementedException();
+    }
+
     IEnumerator DelayedCallback()
     {
         yield return new WaitForSeconds(5f);
@@ -98,5 +108,7 @@ public class MVVMEnvironmentTest : MonoBehaviour {
         yield return new WaitForEndOfFrame();
         DeleteBlockTestEmpty();
         // DeleteComponentTest();
+        TestLinkCreation();
+        TestLinkPropagateChange();
     }
 }
