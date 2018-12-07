@@ -205,6 +205,121 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b3a4efa04a7cf2428e0835b20f15fdc, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &157455491
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224987309109508492, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114374966565796496, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1510992508}
+    - target: {fileID: 114229244140851004, guid: 736299fda47d36a46a7395df514b77bb,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1510992508}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 736299fda47d36a46a7395df514b77bb, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1 &157455492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1167714083975692, guid: 736299fda47d36a46a7395df514b77bb,
+    type: 2}
+  m_PrefabInternal: {fileID: 157455491}
 --- !u!1 &223531210
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +944,8 @@ GameObject:
   m_Component:
   - component: {fileID: 892193489}
   - component: {fileID: 892193490}
+  - component: {fileID: 892193492}
+  - component: {fileID: 892193491}
   m_Layer: 0
   m_Name: DeviceHeight
   m_TagString: Untagged
@@ -849,6 +966,7 @@ Transform:
   - {fileID: 1452244506}
   - {fileID: 415038529}
   - {fileID: 1990426406}
+  - {fileID: 1643810900}
   m_Father: {fileID: 1820292174}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -864,6 +982,95 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_height: 1
+--- !u!114 &892193491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 892193488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ab9066e8186884da64ee239717c741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_combineInputsOperator: 0
+  m_inputs:
+  - viveRole:
+      m_roleTypeFullName: 
+      m_roleValueName: LeftHand
+      m_roleValueInt: 1
+    button: 4
+  m_onVirtualPress:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualPressDown:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualPressUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_toggleGameObjectOnVirtualClick:
+  - {fileID: 157455492}
+  - {fileID: 1566366368}
+  m_toggleComponentOnVirtualClick: []
+--- !u!114 &892193492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 892193488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ab9066e8186884da64ee239717c741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_combineInputsOperator: 0
+  m_inputs:
+  - viveRole:
+      m_roleTypeFullName: 
+      m_roleValueName: RightHand
+      m_roleValueInt: 0
+    button: 4
+  m_onVirtualPress:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualPressDown:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualPressUp:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_toggleGameObjectOnVirtualClick:
+  - {fileID: 900056496}
+  - {fileID: 1936650593}
+  m_toggleComponentOnVirtualClick: []
+--- !u!1 &900056496 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 191206, guid: 12ee41758a687f54e98120e486ccd16e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1643810899}
 --- !u!1 &985443400
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,6 +1717,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1566366368 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 158376, guid: 12ee41758a687f54e98120e486ccd16e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1643810899}
 --- !u!1 &1588871944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1584,6 +1796,66 @@ MonoBehaviour:
     m_roleTypeFullName: HTC.UnityPlugin.Vive.HandRole
     m_roleValueName: RightHand
     m_roleValueInt: 0
+--- !u!1001 &1643810899
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 892193489}
+    m_Modifications:
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 191206, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 158376, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12ee41758a687f54e98120e486ccd16e, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &1643810900 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 450334, guid: 12ee41758a687f54e98120e486ccd16e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1643810899}
+--- !u!1 &1643810902 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 145766, guid: 12ee41758a687f54e98120e486ccd16e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1643810899}
 --- !u!1 &1643933527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,9 +2168,23 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1510992508}
+    - target: {fileID: 114377267609396658, guid: 727bb0f0584dbdc4ea0490f4b0471578,
+        type: 2}
+      propertyPath: reticle
+      value: 
+      objectReference: {fileID: 1643810902}
+    - target: {fileID: 1145074152496638, guid: 727bb0f0584dbdc4ea0490f4b0471578, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 727bb0f0584dbdc4ea0490f4b0471578, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1936650593 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1145074152496638, guid: 727bb0f0584dbdc4ea0490f4b0471578,
+    type: 2}
+  m_PrefabInternal: {fileID: 1936650592}
 --- !u!1 &1980652991 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 131342, guid: 2b3a4efa04a7cf2428e0835b20f15fdc,

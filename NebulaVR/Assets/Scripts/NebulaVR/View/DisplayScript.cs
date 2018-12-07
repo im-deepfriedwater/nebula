@@ -9,6 +9,6 @@ public class DisplayScript : MonoBehaviour {
     public GameObject keyboard;
     void Update ()
     {
-        currentText.text = keyboard.GetComponent<AllButtonsMockScript>().typed;
+        currentText.text = keyboard.GetComponent<AllButtonsMockScript>().typed.ToString();
     }
 }
