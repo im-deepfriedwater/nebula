@@ -50,7 +50,6 @@ public class MVVMEnvironmentTest : MonoBehaviour {
     private void DeleteBlockTest()
     {
         var addBlock = FindObjectOfType<ViewBlock>();
-        ohman = addBlock;
         Debug.Assert(me.ComponentsLength == 6);
         Debug.Assert(vml.componentBindings.Count == 6);
         Debug.Assert(me.BlocksLength == 2);
@@ -89,7 +88,6 @@ public class MVVMEnvironmentTest : MonoBehaviour {
 
     private void TestLinkCreation()
     {
-        var testLink = GameObject
         throw new System.NotImplementedException();
     }
 
