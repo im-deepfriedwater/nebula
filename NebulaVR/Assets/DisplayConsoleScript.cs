@@ -9,11 +9,6 @@ public class DisplayConsoleScript : MonoBehaviour {
     string value;
     public Text currentText;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
         currentText.text = value;
