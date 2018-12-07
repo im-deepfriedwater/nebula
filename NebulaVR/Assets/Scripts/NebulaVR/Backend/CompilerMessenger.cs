@@ -35,13 +35,15 @@ public class CompilerMessenger : MonoBehaviour
   {
     GraphQuery.onQueryComplete += DisplayResult;
 
-    var print = new ModelBlock(new Vector3(10, 5, 0), new HashSet<ModelComponent> { }, "print");
+    var multiplyBlock = new ModelBlock(new Vector3(10, 5, 0), new HashSet<ModelComponent> { }, "multiply");
 
-    var printParameter = new ModelComponent(ComponentType.Parameter, new Vector3(10, 7, 0), print, id: "message");
-    var printReturn = new ModelComponent(ComponentType.Return, new Vector3(8, 5, 0), print);
+    var multiplyParameter1 = new ModelComponent(ComponentType.Parameter, new Vector3(10, 7, 0), multiplyBlock, id: "p1", initializeValue: 2);
+    var multiplyParameter2 = new ModelComponent(ComponentType.Parameter, new Vector3(10, 8, 0), multiplyBlock, id: "p2", initializeValue: 3);
+    var multiplyReturn = new ModelComponent(ComponentType.Return, new Vector3(8, 5, 0), multiplyBlock);
 
-    print.AddComponent(printParameter);
-    print.AddComponent(printReturn);
+    multiplyBlock.AddComponent(multiplyParameter1);
+    multiplyBlock.AddComponent(multiplyParameter2);
+    multiplyBlock.AddComponent(multiplyReturn);
 
 
     var originBlock = new ModelBlock(new Vector3(3, 3, 0), new HashSet<ModelComponent> { }, "hello", isOrigin: true);
@@ -52,9 +54,9 @@ public class CompilerMessenger : MonoBehaviour
 
     // LINKS ARE WIP
     // This might not make sense.
-    var link = new ModelLink(new Vector3(8, 5, 0), new Vector3(5, 5, 0));
+    var link = new ModelLink(new Vector3(5, 5, 0), new Vector3(8, 5, 0));
 
-    HashSet<ModelBlock> modelBlocks = new HashSet<ModelBlock> { print, originBlock };
+    HashSet<ModelBlock> modelBlocks = new HashSet<ModelBlock> { multiplyBlock, originBlock };
     HashSet<ModelLink> modelLinks = new HashSet<ModelLink> { link };
 
     Construct[] constructs = ConvertModelBlocksToDSConstructs(modelBlocks);
@@ -95,7 +97,7 @@ public class CompilerMessenger : MonoBehaviour
           childName = "Result";
         }
         Position childPos = new Position(component.Position.x, component.Position.y, component.Position.z);
-        ConstructInfo2 childInfo = new ConstructInfo2(false, component.Id, "number");
+        ConstructInfo2 childInfo = new ConstructInfo2(false, component.Id, "number", component.InitializeValue);
         Construct child = new Construct(childName, new Construct[] { }, childPos, childInfo);
         children[childIndex++] = child;
       }
@@ -139,8 +141,8 @@ public class ConstructInfo2
   public bool @default;
   public string id;
   public string type;
-  public string init;
-  public ConstructInfo2(bool @default = false, string id = null, string type = null, string init = null)
+  public int? init;
+  public ConstructInfo2(bool @default = false, string id = null, string type = null, int? init = null)
   {
     this.@default = @default;
     this.id = id;
@@ -203,9 +205,15 @@ class TestData
       name: "Parameter",
       children: new Construct[] { },
       pos: new Position(10, 7),
-      info: new ConstructInfo2(id: "message", type: "string", init: "Hello, world!")
+      info: new ConstructInfo2(id: "message", type: "number", init: 2)
     );
     var c5 = new Construct(
+      name: "Parameter",
+      children: new Construct[] { },
+      pos: new Position(10, 7),
+      info: new ConstructInfo2(id: "message", type: "number", init: 3)
+    );
+    var c6 = new Construct(
       name: "Return",
       children: new Construct[] { },
       pos: new Position(8, 5),
@@ -220,9 +228,9 @@ class TestData
     );
     var c3 = new Construct(
       name: "Function",
-      children: new Construct[] { c4, c5 },
+      children: new Construct[] { c4, c5, c6 },
       pos: new Position(10, 5),
-      info: new ConstructInfo2(id: "print")
+      info: new ConstructInfo2(id: "multiply")
     );
     return Newtonsoft.Json.JsonConvert.SerializeObject(new Construct[] { c1, c3 });
   }
