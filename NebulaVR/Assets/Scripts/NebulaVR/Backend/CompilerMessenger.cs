@@ -82,6 +82,7 @@ public class CompilerMessenger : MonoBehaviour
   public void DisplayResult()
   {
     Debug.Log(GraphQuery.queryReturn);
+    GraphQuery.onQueryComplete -= DisplayResult;
   }
 
   void OnDisable()
