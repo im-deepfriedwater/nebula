@@ -88,12 +88,62 @@ public class MVVMEnvironmentTest : MonoBehaviour {
 
     private void TestLinkCreation()
     {
-        throw new System.NotImplementedException();
+        Debug.Assert(me.LinksLength == 0);
+        Debug.Assert(vml.linkBindings.Count == 0);
+        var testTo = new Vector3(2.7f, 2.7f, 2.7f);
+        var testFrom = new Vector3(19, 19, 19);
+        vml.ConstructAndBindViewLink(testTo, testFrom);
+        Debug.Assert(me.LinksLength == 1);
+        Debug.Assert(vml.linkBindings.Count == 1);
     }
 
     private void TestLinkPropagateChange()
     {
-        throw new System.NotImplementedException();
+        var testTo = new Vector3(99, 99, 99);
+        var testFrom = new Vector3(9, 9, 9);
+        var testLink = FindObjectOfType<ViewLink>();
+        testLink.SetTargets(testTo, testFrom);
+        testLink.SignifyChange();
+        Debug.Assert(testLink.binding.vl.to == testTo);
+        Debug.Assert(testLink.binding.ml.to == testTo);
+        Debug.Assert(testLink.binding.vl.from == testFrom);
+        Debug.Assert(testLink.binding.ml.from == testFrom);
+    }
+
+    private void TestLinkDeletion()
+    {
+        var testLink = FindObjectOfType<ViewLink>();
+        vml.DeleteLink(testLink.binding);
+        Debug.Assert(vml.linkBindings.Count == 0);
+        Debug.Assert(me.links.Count == 0);
+    }
+
+    private void TestLinkMultipleCreation()
+    {
+        Debug.Assert(me.LinksLength == 0);
+        Debug.Assert(vml.linkBindings.Count == 0);
+        var testTo = new Vector3(2.7f, 2.7f, 2.7f);
+        var testFrom = new Vector3(19, 19, 19);
+        vml.ConstructAndBindViewLink(testTo, testFrom);
+
+        testTo = new Vector3(10, 10, 10);
+        testFrom = new Vector3(20, 20, 20);
+        vml.ConstructAndBindViewLink(testTo, testFrom);
+
+        testTo = new Vector3(40, 40, 40);
+        testFrom = new Vector3(20, 30, 20);
+        vml.ConstructAndBindViewLink(testTo, testFrom);
+
+        Debug.Assert(me.LinksLength == 3);
+        Debug.Assert(vml.linkBindings.Count == 3);
+    }
+
+    private void DeleteTestMultiple()
+    {
+        var toDelete = GameObject.FindObjectOfType<ViewLink>();
+        vml.DeleteLink(toDelete.binding);
+        Debug.Assert(me.LinksLength == 2);
+        Debug.Assert(vml.linkBindings.Count == 2);
     }
 
     IEnumerator DelayedCallback()
@@ -108,5 +158,7 @@ public class MVVMEnvironmentTest : MonoBehaviour {
         // DeleteComponentTest();
         TestLinkCreation();
         TestLinkPropagateChange();
+        TestLinkDeletion();
+        TestLinkMultipleCreation();
     }
 }

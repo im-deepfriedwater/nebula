@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class ViewModelLayer : MonoBehaviour
 {
     public GameObject viewBlockPrefab;
+    [SerializeField]
+    public GameObject linkPrefab;
     public ModelEnvironment me;
     private Vector3 defaultPosition = new Vector3(0, 0, 0);
     public readonly HashSet<Binding> bindings = new HashSet<Binding>();
@@ -59,12 +61,21 @@ public class ViewModelLayer : MonoBehaviour
         me.RemoveComponent(binding.mc);
     }
 
+    public void DeleteLink(LinkBinding binding)
+    {
+        binding.DeleteFromViewAndModel(me);
+        linkBindings.Remove(binding);
+        me.RemoveLink(binding.ml);
+    }
+
     public void ConstructAndBindViewLink(Vector3 to, Vector3 from)
     {   
-        var gameObjectLink = Instantiate(viewBlockPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        var gameObjectLink = Instantiate(linkPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         var viewLink = gameObjectLink.GetComponent<ViewLink>();
         var modelLink = new ModelLink(to, from);
         var linkBinding = new LinkBinding(viewLink, modelLink, environmentChanged);
+        linkBindings.Add(linkBinding);
+        me.AddLink(modelLink);
         viewLink.Initialize(to, from, linkBinding);
     }
 
