@@ -6,26 +6,21 @@ public class DrawLinkBehaviour : MonoBehaviour {
     [SerializeField]
     Color currentColor;
     LineRenderer lr;
-    GameObject mom;
-    GameObject dad;
-    Vector3 momPos;
-    Vector3 dadPos;
+    public GameObject mom;
+    public GameObject dad;
 
     void Update()
     {
-        if(mom.transform.position == null)
+        if (mom == null || dad == null)
         {
-            lr.SetPosition(0, momPos);
-        } else if(dad.transform.position == null)
-        {
-            lr.SetPosition(1, dadPos);
+            Destroy(gameObject);
+            Debug.Log(mom == null);
+            Debug.Log(dad == null);
         }
         else
         {
             lr.SetPosition(0, mom.transform.position);
             lr.SetPosition(1, dad.transform.position);
-            momPos.Set(mom.transform.position.x, mom.transform.position.y, mom.transform.position.z);
-            dadPos.Set(dad.transform.position.x, dad.transform.position.y, dad.transform.position.z);
         }
     }
 
