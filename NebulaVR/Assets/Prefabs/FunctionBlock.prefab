@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d95da0f54541c94e8a6323d8905d9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentType: 5
+  componentType: 4
 --- !u!114 &114680653870088446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d95da0f54541c94e8a6323d8905d9d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentType: 5
+  componentType: 4
 --- !u!114 &114951835709915262
 MonoBehaviour:
   m_ObjectHideFlags: 1
