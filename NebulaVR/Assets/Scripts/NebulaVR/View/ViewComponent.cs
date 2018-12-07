@@ -25,14 +25,15 @@ public class ViewComponent: ViewConstruct
     // Should be called by the controller when a component is moved.
     override public void SignifyChange()
     {
-        this.UpdateInternals();
+        UpdateInternals();
+        binding.PropagateChange();
         parent.SignifyChange();
     }
 
     void LinkComponent(ViewLink link)
     {
         this.link = link;
-        this.SignifyChange();
+        SignifyChange();
     }
 
     private void UpdateInternals()
@@ -42,7 +43,7 @@ public class ViewComponent: ViewConstruct
 
     public override void Delete()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 }
 

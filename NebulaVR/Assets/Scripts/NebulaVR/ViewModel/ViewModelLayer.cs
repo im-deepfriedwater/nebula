@@ -8,9 +8,9 @@ public class ViewModelLayer : MonoBehaviour
     public GameObject viewBlockPrefab;
     public ModelEnvironment me;
     private Vector3 defaultPosition = new Vector3(0, 0, 0);
-    private readonly HashSet<Binding> bindings = new HashSet<Binding>();
-    private readonly HashSet<ComponentBinding> componentBindings = new HashSet<ComponentBinding>();
-    private readonly HashSet<LinkBinding> linkBindings = new HashSet<LinkBinding>();
+    public readonly HashSet<Binding> bindings = new HashSet<Binding>();
+    public readonly HashSet<ComponentBinding> componentBindings = new HashSet<ComponentBinding>();
+    public readonly HashSet<LinkBinding> linkBindings = new HashSet<LinkBinding>();
     private readonly UnityEvent environmentChanged = new UnityEvent();
 
     public void Start()
@@ -84,6 +84,7 @@ public class ViewModelLayer : MonoBehaviour
         var modelPosition = new Vector3(vc.Position.x, vc.Position.y, vc.Position.z);
         var mc = new ModelComponent(vc.componentType, modelPosition, parent);
         var binding = new ComponentBinding(vc, mc, environmentChanged);
+        componentBindings.Add(binding);
         me.AddComponent(mc);
     }
 

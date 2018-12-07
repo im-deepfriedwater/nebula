@@ -7,8 +7,8 @@ using UnityEngine;
 // Triggers a compilation if so.
 public class ModelEnvironment : MonoBehaviour
 {
-    HashSet<ModelBlock> blocks = new HashSet<ModelBlock>();
-    HashSet<ModelLink> links = new HashSet<ModelLink>();
+    public HashSet<ModelBlock> blocks = new HashSet<ModelBlock>();
+    public HashSet<ModelLink> links = new HashSet<ModelLink>();
     public HashSet<ModelComponent> components = new HashSet<ModelComponent>();
 
     public int BlocksLength 
