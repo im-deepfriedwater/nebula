@@ -22,6 +22,7 @@ public class ViewMenuBehavior : MonoBehaviour {
         button_3.onClick.AddListener(TaskOnClick3);
         button_left.onClick.AddListener(TaskOnClickLeft);
         button_right.onClick.AddListener(TaskOnClickRight);
+        updateTextFields();
     }
 
     void TaskOnClick0()
@@ -29,14 +30,17 @@ public class ViewMenuBehavior : MonoBehaviour {
         if (page == 0)
         {
             //Function 1
+            Debug.Log("1");
+        }
+        if(page == 1)
+        {
+            //Function 5
+            Debug.Log("5");
         }
         if(page == 2)
         {
-            //Function 5
-        }
-        if(page == 3)
-        {
             //Function 9
+            Debug.Log("9");
         }
         //vml.Constru...
     }
@@ -46,14 +50,17 @@ public class ViewMenuBehavior : MonoBehaviour {
         if (page == 0)
         {
             //Function 2
+            Debug.Log("2");
+        }
+        if (page == 1)
+        {
+            //Function 6
+            Debug.Log("6");
         }
         if (page == 2)
         {
-            //Function 6
-        }
-        if (page == 3)
-        {
             //Function 10
+            Debug.Log("10");
         }
     }
 
@@ -62,14 +69,17 @@ public class ViewMenuBehavior : MonoBehaviour {
         if (page == 0)
         {
             //Function 3
+            Debug.Log("3");
+        }
+        if (page == 1)
+        {
+            //Function 7
+            Debug.Log("7");
         }
         if (page == 2)
         {
-            //Function 7
-        }
-        if (page == 3)
-        {
             //Function 11
+            Debug.Log("11");
         }
     }
 
@@ -78,21 +88,24 @@ public class ViewMenuBehavior : MonoBehaviour {
         if (page == 0)
         {
             //Function 4
+            Debug.Log("4");
+        }
+        if (page == 1)
+        {
+            //Function 8
+            Debug.Log("8");
         }
         if (page == 2)
         {
-            //Function 8
-        }
-        if (page == 3)
-        {
             //Function 12
+            Debug.Log("12");
         }
     }
 
     
     void TaskOnClickLeft()
     {
-        page -= 1;
+        page += 2;
         page %= 3;
         updateTextFields();
     }
@@ -114,14 +127,14 @@ public class ViewMenuBehavior : MonoBehaviour {
             text_2.text = "Function 3";
             text_3.text = "Function 4";
         };
-        if (page == 2)
+        if (page == 1)
         {
             text_0.text = "Function 5";
             text_1.text = "Function 6";
             text_2.text = "Function 7";
             text_3.text = "Function 8";
         }
-        if (page == 3)
+        if (page == 2)
         {
             text_0.text = "Function 9";
             text_1.text = "Function 10";
