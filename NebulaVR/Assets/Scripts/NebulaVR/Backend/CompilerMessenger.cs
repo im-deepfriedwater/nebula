@@ -99,7 +99,7 @@ public class CompilerMessenger : MonoBehaviour
       {
         string childName = component.ComponentType.ToString();
         Position childPos = new Position(component.Position.x, component.Position.y, component.Position.z);
-        ConstructInfo2 childInfo = new ConstructInfo2(false, );
+        ConstructInfo2 childInfo = new ConstructInfo2(false);
         Construct child = new Construct(childName, new Construct[] { }, childPos, childInfo);
       }
       string name = block.isOrigin ? ComponentType.Origin.ToString() : ComponentType.Function.ToString();
