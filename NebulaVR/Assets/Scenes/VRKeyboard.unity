@@ -528,7 +528,7 @@ MonoBehaviour:
   m_onVirtualPressDown:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 846958781}
+      - m_Target: {fileID: 1662407338}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -539,12 +539,63 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 846958781}
-        m_MethodName: 
-        m_Mode: 1
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualPressUp:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1662407338}
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_toggleGameObjectOnVirtualClick: []
+  m_toggleComponentOnVirtualClick: []
+--- !u!114 &434447124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 434447121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93ab9066e8186884da64ee239717c741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_combineInputsOperator: 0
+  m_inputs:
+  - viveRole:
+      m_roleTypeFullName: 
+      m_roleValueName: LeftHand
+      m_roleValueInt: 1
+    button: 1
+  m_onVirtualPress:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: HTC.UnityPlugin.Vive.ViveInputVirtualButton+OutputEvent, Assembly-CSharp,
+      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_onVirtualPressDown:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1695542119}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -555,7 +606,7 @@ MonoBehaviour:
   m_onVirtualPressUp:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 846958781}
+      - m_Target: {fileID: 1695542119}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -1026,77 +1077,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &846958781
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 151838, guid: 2b3a4efa04a7cf2428e0835b20f15fdc,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 846958782}
-  - component: {fileID: 846958784}
-  - component: {fileID: 846958783}
-  - component: {fileID: 846958787}
-  m_Layer: 0
-  m_Name: SphereTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &846958782
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 442356, guid: 2b3a4efa04a7cf2428e0835b20f15fdc,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 846958781}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0355, z: 0.02}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &846958783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 846958781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 253f106a91b47844cabce372deadbbde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!135 &846958784
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 13593168, guid: 2b3a4efa04a7cf2428e0835b20f15fdc,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 846958781}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &846958787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 846958781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f15c135eca2cc6940b275ad569de1ade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hand: {fileID: 1379994954}
-  sphere: {fileID: 1244395056}
-  spawnDistance: 1
 --- !u!1 &868731757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,7 +1394,7 @@ GameObject:
   - component: {fileID: 1095235526}
   - component: {fileID: 1095235525}
   m_Layer: 5
-  m_Name: Cube Check for trigger
+  m_Name: Cube Trigger
   m_TagString: Initialize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1432,6 +1412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherGameObject: {fileID: 2006619777}
+  keyboard: {fileID: 0}
 --- !u!65 &1095235526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1497,7 +1478,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1789,11 +1770,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1211957272}
   m_CullTransparentMesh: 0
---- !u!1 &1244395056 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 161416, guid: 12ee41758a687f54e98120e486ccd16e,
-    type: 2}
-  m_PrefabInternal: {fileID: 434447120}
 --- !u!1 &1296514799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2274,11 +2250,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &1379994954 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 134682, guid: cb3370c18187bb444b240cfb08dcc02f,
-    type: 2}
-  m_PrefabInternal: {fileID: 1561204400}
 --- !u!1 &1451870972
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,7 +2271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1451870973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,6 +2398,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7081bd8f7cc51074d86d8a8e4381924d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typed: 
   button_0: {fileID: 1187735119}
   button_1: {fileID: 1777999780}
   button_2: {fileID: 553525202}
@@ -2749,12 +2721,12 @@ GameObject:
   - component: {fileID: 1662407342}
   - component: {fileID: 1662407343}
   m_Layer: 5
-  m_Name: Cube Trigger
+  m_Name: Cube Check for Trigger (R)
   m_TagString: Initialize
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1662407342
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2770,7 +2742,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.67, y: -0.83}
+  m_AnchoredPosition: {x: -32.46, y: -0.83}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662407343
@@ -2785,6 +2757,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherGameObject: {fileID: 2006619777}
+  keyboard: {fileID: 1451870972}
+--- !u!1 &1695542119
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1695542121}
+  - component: {fileID: 1695542120}
+  m_Layer: 5
+  m_Name: 'Cube Check for Trigger (L) '
+  m_TagString: Initialize
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1695542120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695542119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6069fdef20b9c4eb62eaf07d400694, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherGameObject: {fileID: 2103878611}
+  keyboard: {fileID: 1451870972}
+--- !u!224 &1695542121
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1695542119}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.83}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -32.46, y: -0.83}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1720702121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,6 +2970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentText: {fileID: 1724230861}
+  keyboard: {fileID: 1451870972}
 --- !u!1 &1727866176
 GameObject:
   m_ObjectHideFlags: 0
@@ -3254,3 +3275,8 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2102845963}
   m_CullTransparentMesh: 0
+--- !u!1 &2103878611 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 103070, guid: 12ee41758a687f54e98120e486ccd16e,
+    type: 2}
+  m_PrefabInternal: {fileID: 434447120}

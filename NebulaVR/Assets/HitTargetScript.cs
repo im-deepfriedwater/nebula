@@ -5,21 +5,27 @@ using UnityEngine;
 public class HitTargetScript : MonoBehaviour {
     private ReticlePoser reticlePoser;
     public GameObject otherGameObject;
-    // Use this for initialization
-    void Start ()
-    {
-        reticlePoser = otherGameObject.GetComponent<ReticlePoser>();
-    }
-	
-	// Update is called once per frame
-	void Update ()
-    {
-        reticlePoser = otherGameObject.GetComponent<ReticlePoser>();
-        // Debug.Log(reticlePoser.hitTarget.tag);
+    public GameObject keyboard;
 
-        if(reticlePoser.hitTarget.tag == "Initialize")
+	
+    void OnEnable()
+    {
+        reticlePoser = otherGameObject.GetComponent<ReticlePoser>();
+        if (keyboard.activeSelf)
         {
-            Debug.Log("HOWDY");
+            keyboard.SetActive(false);
         }
+        else if (reticlePoser.hitTarget.tag == "Initialize")
+        {
+            keyboard.SetActive(true);
+            Debug.Log(keyboard.GetComponent<AllButtonsMockScript>().typed);
+        }
+    }
+
+    void OnDisable()
+    {
+        //reticlePoser.hitTarget.____ = keyboard.GetComponent<AllButtonsMockScript>().typed;
+        reticlePoser.hitTarget.GetComponent<TestValue>().value = keyboard.GetComponent<AllButtonsMockScript>().typed;
+
     }
 }
