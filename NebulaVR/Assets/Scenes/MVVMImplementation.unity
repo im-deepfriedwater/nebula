@@ -356,6 +356,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   viewBlockPrefab: {fileID: 1929890206885278, guid: 1c7787ec2e2957243a693025a12b9227,
     type: 2}
+  linkPrefab: {fileID: 1358730011843616, guid: e56bb970ed96c1a4e83f225b586b826e, type: 2}
   me: {fileID: 1634002253}
 --- !u!4 &1514284965
 Transform:

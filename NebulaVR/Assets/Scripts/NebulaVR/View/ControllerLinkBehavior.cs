@@ -9,6 +9,9 @@ public class ControllerLinkBehavior : MonoBehaviour
     GameObject prefabDrawLink;
     [SerializeField]
     HandRole selectedHand;
+    [SerializeField]
+    ViewModelLayer vml;
+
 
     GameObject first;
     GameObject second;
@@ -40,7 +43,7 @@ public class ControllerLinkBehavior : MonoBehaviour
 
     void DrawLine()
     {
-        var drawLinkBehaviour = Instantiate(prefabDrawLink).GetComponent<DrawLinkBehaviour>();
-        drawLinkBehaviour.Initialize(first, second);
+        var drawLinkObject = vml.ConstructAndBindViewLink(first.transform.position, second.transform.position);
+        drawLinkObject.GetComponent<DrawLinkBehaviour>().Initialize(first, second);
     }
 }

@@ -24,6 +24,17 @@ public class ViewLink : MonoBehaviour {
         Destroy(this);
     }
 
+    public Vector3 GetComponentTo()
+    {
+        return gameObject.GetComponent<DrawLinkBehaviour>().dad.transform.position;
+    }
+
+    public Vector3 GetComponentFrom()
+    {
+        return gameObject.GetComponent<DrawLinkBehaviour>().mom.transform.position;
+
+    }
+
     public void SignifyChange()
     {
         binding.PropagateChange();
