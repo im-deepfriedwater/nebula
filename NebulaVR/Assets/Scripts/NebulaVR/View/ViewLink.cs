@@ -5,9 +5,9 @@ using UnityEngine;
 public class ViewLink : MonoBehaviour {
     public Vector3 to;
     public Vector3 from;
-    LinkBinding binding;
+    public LinkBinding binding;
       
-    void SetTargets(Vector3 to, Vector3 from)
+    public void SetTargets(Vector3 to, Vector3 from)
     {
         this.to = to;
         this.from = from;

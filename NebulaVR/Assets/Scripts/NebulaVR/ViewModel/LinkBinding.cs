@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class LinkBinding {
 
-    private readonly ViewLink vl;
-    private readonly ModelLink ml;
+    public readonly ViewLink vl;
+    public readonly ModelLink ml;
     readonly UnityEvent environmentChanged;
 
     public LinkBinding(ViewLink vl, ModelLink ml, UnityEvent viewModelEvent)
