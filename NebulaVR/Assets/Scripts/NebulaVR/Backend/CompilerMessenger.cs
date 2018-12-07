@@ -35,31 +35,24 @@ public class CompilerMessenger : MonoBehaviour
   {
     GraphQuery.onQueryComplete += DisplayResult;
 
-    var printAccessor = new ModelComponent(ComponentType.Accessor, new Vector3(10, 10, 15));
-    var printReturn = new ModelComponent(ComponentType.Return, new Vector3(10, 10, 5));
+    var print = new ModelBlock(new Vector3(10, 5, 0), new HashSet<ModelComponent> { }, "print");
 
-    var printComponents = new HashSet<ModelComponent>
-    {
-        printAccessor,
-        printReturn
-    };
+    var printParameter = new ModelComponent(ComponentType.Parameter, new Vector3(10, 7, 0), print, id: "message");
+    var printReturn = new ModelComponent(ComponentType.Return, new Vector3(8, 5, 0), print);
 
-    var print = new ModelBlock(new Vector3(10, 10, 10), printComponents);
+    print.AddComponent(printParameter);
+    print.AddComponent(printReturn);
 
-    var originParameter = new ModelComponent(ComponentType.Parameter, new Vector3(0, 0, 5));
-    var originReturn = new ModelComponent(ComponentType.Return, new Vector3(0, 0, -5));
 
-    var originComponents = new HashSet<ModelComponent>
-        {
-            originParameter,
-            originReturn
-        };
+    var originBlock = new ModelBlock(new Vector3(3, 3, 0), new HashSet<ModelComponent> { }, "hello", isOrigin: true);
 
-    var originBlock = new ModelBlock(new Vector3(0, 0, 0), originComponents, isOrigin: true);
+    var originReturn = new ModelComponent(ComponentType.Return, new Vector3(5, 5, 0), originBlock);
+
+    originBlock.AddComponent(originReturn);
 
     // LINKS ARE WIP
     // This might not make sense.
-    var link = new ModelLink(new Vector3(10, 10, 5), new Vector3(0, 0, -5));
+    var link = new ModelLink(new Vector3(8, 5, 0), new Vector3(5, 5, 0));
 
     HashSet<ModelBlock> modelBlocks = new HashSet<ModelBlock> { print, originBlock };
     HashSet<ModelLink> modelLinks = new HashSet<ModelLink> { link };
@@ -70,13 +63,6 @@ public class CompilerMessenger : MonoBehaviour
     GraphQuery.variable["constructs"] = Newtonsoft.Json.JsonConvert.SerializeObject(constructs).Replace("\"", "\\\"");
     GraphQuery.variable["links"] = Newtonsoft.Json.JsonConvert.SerializeObject(links).Replace("\"", "\\\"");
     GraphQuery.POST(CompileConstructsWithLinks);
-
-    // GraphQuery.variable["constructs"] = TestData.GetSampleContructs().Replace("\"", "\\\"");
-    // GraphQuery.variable["links"] = TestData.GetSampleLinks().Replace("\"", "\\\"");
-    // GraphQuery.POST(CompileConstructsWithLinks);
-
-    // GraphQuery.variable["program"] = TestData.HELLO_WORLD;
-    // GraphQuery.POST(ParseProgram);
   }
 
   public void DisplayResult()
@@ -92,33 +78,43 @@ public class CompilerMessenger : MonoBehaviour
 
   public static Construct[] ConvertModelBlocksToDSConstructs(HashSet<ModelBlock> blocks)
   {
-    Construct[] result = new Construct[] { };
+    int resultIndex = 0;
+    Construct[] result = new Construct[blocks.Count];
     foreach (ModelBlock block in blocks)
     {
-      Construct[] children = new Construct[] { };
+      int childIndex = 0;
+      string name = block.isOrigin ? ComponentType.Origin.ToString() : ComponentType.Function.ToString();
+      Position pos = new Position(block.Position.x, block.Position.y, block.Position.z);
+      ConstructInfo2 info = new ConstructInfo2(block.isOrigin, block.Id);
+      Construct[] children = new Construct[block.Components.Count];
       foreach (ModelComponent component in block.Components)
       {
         string childName = component.ComponentType.ToString();
+        if (block.isOrigin && component.ComponentType == ComponentType.Return)
+        {
+          childName = "Result";
+        }
         Position childPos = new Position(component.Position.x, component.Position.y, component.Position.z);
-        ConstructInfo2 childInfo = new ConstructInfo2(false);
+        ConstructInfo2 childInfo = new ConstructInfo2(false, component.Id, "number");
         Construct child = new Construct(childName, new Construct[] { }, childPos, childInfo);
+        children[childIndex++] = child;
       }
-      string name = block.isOrigin ? ComponentType.Origin.ToString() : ComponentType.Function.ToString();
-      Position pos = new Position(block.Position.x, block.Position.y, block.Position.z);
-      ConstructInfo2 info = new ConstructInfo2(block.isOrigin);
       Construct construct = new Construct(name, children, pos, info);
+      result[resultIndex++] = construct;
     }
     return result;
   }
 
   public static Link[] ConvertModelLinksToDSLinks(HashSet<ModelLink> links)
   {
-    Link[] result = new Link[] { };
+    Link[] result = new Link[links.Count];
+    int resultIndex = 0;
     foreach (ModelLink link in links)
     {
       Position from = new Position(link.from.x, link.from.y, link.from.z);
       Position to = new Position(link.to.x, link.to.y, link.to.z);
       Link newLink = new Link(from, to);
+      result[resultIndex++] = newLink;
     }
     return result;
   }
