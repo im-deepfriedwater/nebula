@@ -24,7 +24,8 @@ public class ViewModelLayer : MonoBehaviour
 
     private void Test()
     {
-        //me.TriggerCompliation();
+        me.TriggerCompliation();
+        Debug.Log("Hello");
     }
 
     private void AddToModel(ModelBlock modelBlock)
@@ -70,7 +71,7 @@ public class ViewModelLayer : MonoBehaviour
         me.RemoveLink(binding.ml);
     }
 
-    public void ConstructAndBindViewLink(Vector3 to, Vector3 from)
+    public GameObject ConstructAndBindViewLink(Vector3 to, Vector3 from)
     {   
         var gameObjectLink = Instantiate(linkPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         var viewLink = gameObjectLink.GetComponent<ViewLink>();
@@ -79,6 +80,8 @@ public class ViewModelLayer : MonoBehaviour
         linkBindings.Add(linkBinding);
         me.AddLink(modelLink);
         viewLink.Initialize(to, from, linkBinding);
+
+        return gameObjectLink;
     }
 
     public void ConstructAndBindViewBlock(Vector3 position, GameObject viewBlockPrefab)

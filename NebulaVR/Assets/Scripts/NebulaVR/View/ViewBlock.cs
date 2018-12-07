@@ -9,24 +9,23 @@ public class ViewBlock : ViewConstruct
     public Binding binding;
     public bool isOrigin;
 
+  public void Initialize(Binding binding)
+  {
+    this.binding = binding;
+  }
 
-    public void Initialize(Binding binding)
-    {
-        this.binding = binding;
-    }
-     
-    // This should be called whenever this block is modified.
-    override public void SignifyChange()
-    {
-        this.binding.PropagateChange();
-    }
+  // This should be called whenever this block is modified.
+  override public void SignifyChange()
+  {
+    this.binding.PropagateChange();
+  }
 
-    public override void Delete()
+  public override void Delete()
+  {
+    foreach (ViewComponent vc in gameObject.GetComponentsInChildren<ViewComponent>())
     {
-        foreach (ViewComponent vc in gameObject.GetComponentsInChildren<ViewComponent>())
-        {
-            vc.Delete();
-        }
-        Destroy(this.gameObject);
+      vc.Delete();
     }
+    Destroy(this.gameObject);
+  }
 }

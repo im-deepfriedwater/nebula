@@ -36,6 +36,7 @@ public class ViewMenuBehavior : MonoBehaviour {
         {
             //Function 1
             Debug.Log("1");
+            vml.ConstructAndBindViewBlock(new Vector3(5, 0, 5), prefabs[0]);
         }
         if(page == 1)
         {
@@ -134,7 +135,7 @@ public class ViewMenuBehavior : MonoBehaviour {
     {
         if (page == 0)
         {
-            text_0.text = "Function 1";
+            text_0.text = "Add Function";
             text_1.text = "Function 2";
             text_2.text = "Function 3";
             text_3.text = "Function 4";

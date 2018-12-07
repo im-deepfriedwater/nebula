@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4374723172388984}
   - component: {fileID: 114475264381553784}
   - component: {fileID: 120407133482109274}
+  - component: {fileID: 114675695944472954}
   m_Layer: 0
   m_Name: Link
   m_TagString: Untagged
@@ -53,6 +54,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentColor: {r: 0.41568628, g: 0, b: 0.4392157, a: 1}
+  mom: {fileID: 0}
+  dad: {fileID: 0}
+--- !u!114 &114675695944472954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1358730011843616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2965b12ebd3b0442b261c58ff1c2a05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  to: {x: 0, y: 0, z: 0}
+  from: {x: 0, y: 0, z: 0}
 --- !u!120 &120407133482109274
 LineRenderer:
   m_ObjectHideFlags: 1

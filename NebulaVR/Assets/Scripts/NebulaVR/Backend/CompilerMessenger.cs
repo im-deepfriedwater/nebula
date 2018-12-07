@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using WebSocketSharp;
 using SimpleJSON;
 using graphQLClient;
 
@@ -28,24 +28,27 @@ public class CompilerMessenger : MonoBehaviour
 
   void Start()
   {
-    GraphQuery.url = "http://localhost:5050/graphql/";
-    SendQueryToBackend();
+    // Test Query
+    SendQueryToBackend(TestData.GetSampleModelBlocks(), TestData.GetSampleModelLinks());
   }
-  public void SendQueryToBackend()
+  public static void SendQueryToBackend(HashSet<ModelBlock> modelBlocks, HashSet<ModelLink> modelLinks)
   {
     GraphQuery.onQueryComplete += DisplayResult;
 
-    GraphQuery.variable["constructs"] = TestData.GetSampleContructs().Replace("\"", "\\\"");
-    GraphQuery.variable["links"] = TestData.GetSampleLinks().Replace("\"", "\\\"");
-    GraphQuery.POST(CompileConstructsWithLinks);
+    GraphQuery.url = "http://localhost:5050/graphql/";
 
-    GraphQuery.variable["program"] = TestData.HELLO_WORLD;
-    GraphQuery.POST(ParseProgram);
+    Construct[] constructs = ConvertModelBlocksToDSConstructs(modelBlocks);
+    Link[] links = ConvertModelLinksToDSLinks(modelLinks);
+
+    GraphQuery.variable["constructs"] = Newtonsoft.Json.JsonConvert.SerializeObject(constructs).Replace("\"", "\\\"");
+    GraphQuery.variable["links"] = Newtonsoft.Json.JsonConvert.SerializeObject(links).Replace("\"", "\\\"");
+    GraphQuery.POST(CompileConstructsWithLinks);
   }
 
-  public void DisplayResult()
+  public static void DisplayResult()
   {
     Debug.Log(GraphQuery.queryReturn);
+    GraphQuery.onQueryComplete -= DisplayResult;
   }
 
   void OnDisable()
@@ -55,33 +58,43 @@ public class CompilerMessenger : MonoBehaviour
 
   public static Construct[] ConvertModelBlocksToDSConstructs(HashSet<ModelBlock> blocks)
   {
-    Construct[] result = new Construct[] { };
+    int resultIndex = 0;
+    Construct[] result = new Construct[blocks.Count];
     foreach (ModelBlock block in blocks)
     {
-      Construct[] children = new Construct[] { };
+      int childIndex = 0;
+      string name = block.isOrigin ? ComponentType.Origin.ToString() : ComponentType.Function.ToString();
+      Position pos = new Position(block.Position.x, block.Position.y, block.Position.z);
+      ConstructInfo2 info = new ConstructInfo2(block.isOrigin, block.Id);
+      Construct[] children = new Construct[block.Components.Count];
       foreach (ModelComponent component in block.Components)
       {
         string childName = component.ComponentType.ToString();
+        if (block.isOrigin && component.ComponentType == ComponentType.Return)
+        {
+          childName = "Result";
+        }
         Position childPos = new Position(component.Position.x, component.Position.y, component.Position.z);
-        ConstructInfo childInfo = new ConstructInfo();
+        ConstructInfo2 childInfo = new ConstructInfo2(false, component.Id, "number", component.InitializeValue);
         Construct child = new Construct(childName, new Construct[] { }, childPos, childInfo);
+        children[childIndex++] = child;
       }
-      string name = block.isOrigin ? ComponentType.Origin.ToString() : ComponentType.Function.ToString();
-      Position pos = new Position(block.Position.x, block.Position.y, block.Position.z);
-      ConstructInfo info = new ConstructInfo();
       Construct construct = new Construct(name, children, pos, info);
+      result[resultIndex++] = construct;
     }
     return result;
   }
 
   public static Link[] ConvertModelLinksToDSLinks(HashSet<ModelLink> links)
   {
-    Link[] result = new Link[] { };
+    Link[] result = new Link[links.Count];
+    int resultIndex = 0;
     foreach (ModelLink link in links)
     {
       Position from = new Position(link.from.x, link.from.y, link.from.z);
       Position to = new Position(link.to.x, link.to.y, link.to.z);
       Link newLink = new Link(from, to);
+      result[resultIndex++] = newLink;
     }
     return result;
   }
@@ -101,13 +114,13 @@ public class Position
   }
 }
 
-public class ConstructInfo
+public class ConstructInfo2
 {
   public bool @default;
   public string id;
   public string type;
-  public string init;
-  public ConstructInfo(bool @default = false, string id = null, string type = null, string init = null)
+  public int? init;
+  public ConstructInfo2(bool @default = false, string id = null, string type = null, int? init = null)
   {
     this.@default = @default;
     this.id = id;
@@ -121,9 +134,9 @@ public class Construct
   public string name;
   public Construct[] children;
   public Position pos;
-  public ConstructInfo info;
+  public ConstructInfo2 info;
 
-  public Construct(string name, Construct[] children, Position pos, ConstructInfo info)
+  public Construct(string name, Construct[] children, Position pos, ConstructInfo2 info)
   {
     this.name = name;
     this.children = children;
@@ -158,38 +171,72 @@ class TestData
     Link (8, 5) (5, 5)
   ";
 
+  public static HashSet<ModelBlock> GetSampleModelBlocks()
+  {
+    var multiplyBlock = new ModelBlock(new Vector3(10, 5, 0), new HashSet<ModelComponent> { }, "multiply");
+
+    var multiplyParameter1 = new ModelComponent(ComponentType.Parameter, new Vector3(10, 7, 0), multiplyBlock, id: "p1", initializeValue: 2);
+    var multiplyParameter2 = new ModelComponent(ComponentType.Parameter, new Vector3(10, 8, 0), multiplyBlock, id: "p2", initializeValue: 3);
+    var multiplyReturn = new ModelComponent(ComponentType.Return, new Vector3(8, 5, 0), multiplyBlock);
+
+    multiplyBlock.AddComponent(multiplyParameter1);
+    multiplyBlock.AddComponent(multiplyParameter2);
+    multiplyBlock.AddComponent(multiplyReturn);
+
+
+    var originBlock = new ModelBlock(new Vector3(3, 3, 0), new HashSet<ModelComponent> { }, "hello", isOrigin: true);
+
+    var originReturn = new ModelComponent(ComponentType.Return, new Vector3(5, 5, 0), originBlock);
+
+    originBlock.AddComponent(originReturn);
+
+    return new HashSet<ModelBlock> { multiplyBlock, originBlock };
+  }
+
+  public static HashSet<ModelLink> GetSampleModelLinks()
+  {
+    var link = new ModelLink(new Vector3(5, 5, 0), new Vector3(8, 5, 0));
+
+    return new HashSet<ModelLink> { link };
+  }
   public static string GetSampleContructs()
   {
     var c2 = new Construct(
       name: "Result",
       children: new Construct[] { },
       pos: new Position(5, 5),
-      info: new ConstructInfo(type: "void")
+      info: new ConstructInfo2(type: "void")
     );
     var c4 = new Construct(
       name: "Parameter",
       children: new Construct[] { },
       pos: new Position(10, 7),
-      info: new ConstructInfo(id: "message", type: "string", init: "Hello, world!")
+      info: new ConstructInfo2(id: "message", type: "number", init: 2)
     );
     var c5 = new Construct(
+      name: "Parameter",
+      children: new Construct[] { },
+      pos: new Position(10, 7),
+      info: new ConstructInfo2(id: "message", type: "number", init: 3)
+    );
+    var c6 = new Construct(
       name: "Return",
       children: new Construct[] { },
       pos: new Position(8, 5),
-      info: new ConstructInfo(type: "void")
+      info: new ConstructInfo2(type: "void")
     );
 
     var c1 = new Construct(
       name: "Origin",
       children: new Construct[] { c2 },
       pos: new Position(3, 3),
-      info: new ConstructInfo(@default: true, id: "hello")
+      info: new ConstructInfo2(@default: true, id: "hello")
     );
     var c3 = new Construct(
       name: "Function",
-      children: new Construct[] { c4, c5 },
+      children: new Construct[] { c4, c5, c6 },
       pos: new Position(10, 5),
-      info: new ConstructInfo(id: "print")
+      info: new ConstructInfo2(id: "multiply")
     );
     return Newtonsoft.Json.JsonConvert.SerializeObject(new Construct[] { c1, c3 });
   }

@@ -5,8 +5,10 @@ using UnityEngine;
 public class TestMVVMCompiler : MonoBehaviour {
     [SerializeField]
     ViewModelLayer vml;
+
     [SerializeField]
     GameObject prefabBlock;
+
 
 	// Use this for initialization
 	void Start ()
