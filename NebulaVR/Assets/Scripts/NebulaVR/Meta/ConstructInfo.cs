@@ -1,4 +1,5 @@
-﻿public struct ConstructInfo {
-    readonly LanguageConstants name;
-    readonly ViewComponent[] components;
+﻿public struct ConstructInfo
+{
+  readonly LanguageConstants name;
+  readonly ViewComponent[] components;
 }

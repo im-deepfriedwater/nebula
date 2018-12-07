@@ -13,7 +13,7 @@ public class ModelBlock : ModelConstruct
 
   public ModelBlock(Vector3 position, HashSet<ModelComponent> components, bool isOrigin = false)
   {
-    this.position = position;
+    this.Position = position;
     this.components = components;
     this.isOrigin = isOrigin;
   }

@@ -35,12 +35,48 @@ public class CompilerMessenger : MonoBehaviour
   {
     GraphQuery.onQueryComplete += DisplayResult;
 
-    GraphQuery.variable["constructs"] = TestData.GetSampleContructs().Replace("\"", "\\\"");
-    GraphQuery.variable["links"] = TestData.GetSampleLinks().Replace("\"", "\\\"");
+    var printAccessor = new ModelComponent(ComponentType.Accessor, new Vector3(10, 10, 15));
+    var printReturn = new ModelComponent(ComponentType.Return, new Vector3(10, 10, 5));
+
+    var printComponents = new HashSet<ModelComponent>
+    {
+        printAccessor,
+        printReturn
+    };
+
+    var print = new ModelBlock(new Vector3(10, 10, 10), printComponents);
+
+    var originParameter = new ModelComponent(ComponentType.Parameter, new Vector3(0, 0, 5));
+    var originReturn = new ModelComponent(ComponentType.Return, new Vector3(0, 0, -5));
+
+    var originComponents = new HashSet<ModelComponent>
+        {
+            originParameter,
+            originReturn
+        };
+
+    var originBlock = new ModelBlock(new Vector3(0, 0, 0), originComponents, isOrigin: true);
+
+    // LINKS ARE WIP
+    // This might not make sense.
+    var link = new ModelLink(new Vector3(10, 10, 5), new Vector3(0, 0, -5));
+
+    HashSet<ModelBlock> modelBlocks = new HashSet<ModelBlock> { print, originBlock };
+    HashSet<ModelLink> modelLinks = new HashSet<ModelLink> { link };
+
+    Construct[] constructs = ConvertModelBlocksToDSConstructs(modelBlocks);
+    Link[] links = ConvertModelLinksToDSLinks(modelLinks);
+
+    GraphQuery.variable["constructs"] = Newtonsoft.Json.JsonConvert.SerializeObject(constructs).Replace("\"", "\\\"");
+    GraphQuery.variable["links"] = Newtonsoft.Json.JsonConvert.SerializeObject(links).Replace("\"", "\\\"");
     GraphQuery.POST(CompileConstructsWithLinks);
 
-    GraphQuery.variable["program"] = TestData.HELLO_WORLD;
-    GraphQuery.POST(ParseProgram);
+    // GraphQuery.variable["constructs"] = TestData.GetSampleContructs().Replace("\"", "\\\"");
+    // GraphQuery.variable["links"] = TestData.GetSampleLinks().Replace("\"", "\\\"");
+    // GraphQuery.POST(CompileConstructsWithLinks);
+
+    // GraphQuery.variable["program"] = TestData.HELLO_WORLD;
+    // GraphQuery.POST(ParseProgram);
   }
 
   public void DisplayResult()
@@ -63,12 +99,12 @@ public class CompilerMessenger : MonoBehaviour
       {
         string childName = component.ComponentType.ToString();
         Position childPos = new Position(component.Position.x, component.Position.y, component.Position.z);
-        ConstructInfo childInfo = new ConstructInfo();
+        ConstructInfo2 childInfo = new ConstructInfo2(false, );
         Construct child = new Construct(childName, new Construct[] { }, childPos, childInfo);
       }
       string name = block.isOrigin ? ComponentType.Origin.ToString() : ComponentType.Function.ToString();
       Position pos = new Position(block.Position.x, block.Position.y, block.Position.z);
-      ConstructInfo info = new ConstructInfo();
+      ConstructInfo2 info = new ConstructInfo2(block.isOrigin);
       Construct construct = new Construct(name, children, pos, info);
     }
     return result;
@@ -101,13 +137,13 @@ public class Position
   }
 }
 
-public class ConstructInfo
+public class ConstructInfo2
 {
   public bool @default;
   public string id;
   public string type;
   public string init;
-  public ConstructInfo(bool @default = false, string id = null, string type = null, string init = null)
+  public ConstructInfo2(bool @default = false, string id = null, string type = null, string init = null)
   {
     this.@default = @default;
     this.id = id;
@@ -121,9 +157,9 @@ public class Construct
   public string name;
   public Construct[] children;
   public Position pos;
-  public ConstructInfo info;
+  public ConstructInfo2 info;
 
-  public Construct(string name, Construct[] children, Position pos, ConstructInfo info)
+  public Construct(string name, Construct[] children, Position pos, ConstructInfo2 info)
   {
     this.name = name;
     this.children = children;
@@ -164,32 +200,32 @@ class TestData
       name: "Result",
       children: new Construct[] { },
       pos: new Position(5, 5),
-      info: new ConstructInfo(type: "void")
+      info: new ConstructInfo2(type: "void")
     );
     var c4 = new Construct(
       name: "Parameter",
       children: new Construct[] { },
       pos: new Position(10, 7),
-      info: new ConstructInfo(id: "message", type: "string", init: "Hello, world!")
+      info: new ConstructInfo2(id: "message", type: "string", init: "Hello, world!")
     );
     var c5 = new Construct(
       name: "Return",
       children: new Construct[] { },
       pos: new Position(8, 5),
-      info: new ConstructInfo(type: "void")
+      info: new ConstructInfo2(type: "void")
     );
 
     var c1 = new Construct(
       name: "Origin",
       children: new Construct[] { c2 },
       pos: new Position(3, 3),
-      info: new ConstructInfo(@default: true, id: "hello")
+      info: new ConstructInfo2(@default: true, id: "hello")
     );
     var c3 = new Construct(
       name: "Function",
       children: new Construct[] { c4, c5 },
       pos: new Position(10, 5),
-      info: new ConstructInfo(id: "print")
+      info: new ConstructInfo2(id: "print")
     );
     return Newtonsoft.Json.JsonConvert.SerializeObject(new Construct[] { c1, c3 });
   }
