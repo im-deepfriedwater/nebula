@@ -9,6 +9,8 @@ const {
 module.exports.resolvers = {
   Query: {
     compile: (_, { constructs, links, input }) => {
+      console.log(constructs);
+      console.log(links);
       const program = generateProgram(
         JSON.parse(constructs),
         JSON.parse(links)
