@@ -13,12 +13,14 @@ public class MVVMEnvironmentTest : MonoBehaviour {
     GameObject tl;
 
     [SerializeField]
+    GameObject prefabBlock;
+    [SerializeField]
     ModelEnvironment me;
 
     public void SpawnBlock()
     {
-        vml.ConstructAndBindViewBlock(new Vector3(0, 0, 0), PremadeBlock.AddFunction);
-        vml.ConstructAndBindViewBlock(new Vector3(0, 5, 5), PremadeBlock.AddFunction);
+        vml.ConstructAndBindViewBlock(new Vector3(0, 0, 0), prefabBlock);
+        vml.ConstructAndBindViewBlock(new Vector3(0, 5, 5), prefabBlock);
     }
 
     public void Start()

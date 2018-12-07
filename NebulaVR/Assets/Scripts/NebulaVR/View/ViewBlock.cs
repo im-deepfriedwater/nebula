@@ -7,6 +7,8 @@ public class ViewBlock : ViewConstruct
     [SerializeField]
     public readonly string id;
     public Binding binding;
+    public bool isOrigin;
+
 
     public void Initialize(Binding binding)
     {

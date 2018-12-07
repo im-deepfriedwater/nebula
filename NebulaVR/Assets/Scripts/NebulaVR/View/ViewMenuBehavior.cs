@@ -7,7 +7,12 @@ using UnityEngine.UI;
 public class ViewMenuBehavior : MonoBehaviour {
 
     [SerializeField]
+    GameObject[] prefabs;
+
+    [SerializeField]
     ViewModelLayer vml;
+    [SerializeField]
+    GameObject console;
     private int page;
     public Button button_0, button_1, button_2, button_3, 
                   button_left, button_right;
@@ -55,7 +60,14 @@ public class ViewMenuBehavior : MonoBehaviour {
         if (page == 1)
         {
             //Function 6
-            Debug.Log("6");
+            if (!console.activeSelf)
+            {
+                console.SetActive(true);
+            }
+            else
+            {
+                console.SetActive(false);
+            }
         }
         if (page == 2)
         {
@@ -130,7 +142,7 @@ public class ViewMenuBehavior : MonoBehaviour {
         if (page == 1)
         {
             text_0.text = "Function 5";
-            text_1.text = "Function 6";
+            text_1.text = "I'm BenConsole";
             text_2.text = "Function 7";
             text_3.text = "Function 8";
         }

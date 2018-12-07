@@ -5,9 +5,10 @@ using UnityEngine.Events;
 
 public class ViewModelLayer : MonoBehaviour
 {
-    public GameObject viewBlockPrefab;
     [SerializeField]
     public GameObject linkPrefab;
+    [SerializeField]
+    public GameObject originPrefab;
     public ModelEnvironment me;
     private Vector3 defaultPosition = new Vector3(0, 0, 0);
     public readonly HashSet<Binding> bindings = new HashSet<Binding>();
@@ -17,6 +18,7 @@ public class ViewModelLayer : MonoBehaviour
 
     public void Start()
     {
+        ConstructAndBindViewBlock(new Vector3(0, 0, 0), originPrefab);
         environmentChanged.AddListener(Test);
     }
 
@@ -79,7 +81,7 @@ public class ViewModelLayer : MonoBehaviour
         viewLink.Initialize(to, from, linkBinding);
     }
 
-    public void ConstructAndBindViewBlock(Vector3 position, PremadeBlock blockType)
+    public void ConstructAndBindViewBlock(Vector3 position, GameObject viewBlockPrefab)
     {   
         var gameObjectViewBlock = Instantiate(viewBlockPrefab, position, Quaternion.identity, me.transform) as GameObject;
         var viewBlock = gameObjectViewBlock.GetComponent(typeof(ViewBlock)) as ViewBlock;
@@ -105,6 +107,7 @@ public class ViewModelLayer : MonoBehaviour
         Vector3 viewPosition = gameObjectViewBlock.transform.position;
         string viewName = gameObjectViewBlock.GetComponent<ViewBlock>().id;
         var resultModelBlock = new ModelBlock(viewPosition, modelComponents, viewName);
+        resultModelBlock.isOrigin = gameObjectViewBlock.GetComponent<ViewBlock>().isOrigin;
         foreach (ViewComponent vc in gameObjectViewBlock.GetComponentsInChildren<ViewComponent>())
         {    
             var mc = new ModelComponent(vc.componentType, vc.Position, resultModelBlock);
