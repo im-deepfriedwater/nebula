@@ -15,8 +15,8 @@ public class ViewComponent : ViewConstruct
 
   // Internal Value that is used to determine the starting value 
   // for Parameters without an entering Link. Default value is null.
-  string initializeValue;
-  public string InitializeValue
+  int? initializeValue;
+  public int? InitializeValue
   {
     get { return initializeValue; }
   }

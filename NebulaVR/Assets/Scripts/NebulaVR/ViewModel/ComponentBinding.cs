@@ -17,7 +17,7 @@ public class ComponentBinding
   public void PropagateChange()
   {
     mc.Position = new Vector3(vc.Position.x, vc.Position.y, vc.Position.z);
-    mc.InitializeValue = vc.InitializeValue;
+    mc.InitializeValue = vc.InitializeValue.ToString();
     this.environmentChanged.Invoke();
   }
 
