@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using WebSocketSharp;
 using SimpleJSON;
 using graphQLClient;
 
@@ -28,36 +28,14 @@ public class CompilerMessenger : MonoBehaviour
 
   void Start()
   {
-    GraphQuery.url = "http://localhost:5050/graphql/";
-    SendQueryToBackend();
+    // Test Query
+    SendQueryToBackend(TestData.GetSampleModelBlocks(), TestData.GetSampleModelLinks());
   }
-  public void SendQueryToBackend()
+  public static void SendQueryToBackend(HashSet<ModelBlock> modelBlocks, HashSet<ModelLink> modelLinks)
   {
     GraphQuery.onQueryComplete += DisplayResult;
 
-    var multiplyBlock = new ModelBlock(new Vector3(10, 5, 0), new HashSet<ModelComponent> { }, "multiply");
-
-    var multiplyParameter1 = new ModelComponent(ComponentType.Parameter, new Vector3(10, 7, 0), multiplyBlock, id: "p1", initializeValue: 2);
-    var multiplyParameter2 = new ModelComponent(ComponentType.Parameter, new Vector3(10, 8, 0), multiplyBlock, id: "p2", initializeValue: 3);
-    var multiplyReturn = new ModelComponent(ComponentType.Return, new Vector3(8, 5, 0), multiplyBlock);
-
-    multiplyBlock.AddComponent(multiplyParameter1);
-    multiplyBlock.AddComponent(multiplyParameter2);
-    multiplyBlock.AddComponent(multiplyReturn);
-
-
-    var originBlock = new ModelBlock(new Vector3(3, 3, 0), new HashSet<ModelComponent> { }, "hello", isOrigin: true);
-
-    var originReturn = new ModelComponent(ComponentType.Return, new Vector3(5, 5, 0), originBlock);
-
-    originBlock.AddComponent(originReturn);
-
-    // LINKS ARE WIP
-    // This might not make sense.
-    var link = new ModelLink(new Vector3(5, 5, 0), new Vector3(8, 5, 0));
-
-    HashSet<ModelBlock> modelBlocks = new HashSet<ModelBlock> { multiplyBlock, originBlock };
-    HashSet<ModelLink> modelLinks = new HashSet<ModelLink> { link };
+    GraphQuery.url = "http://localhost:5050/graphql/";
 
     Construct[] constructs = ConvertModelBlocksToDSConstructs(modelBlocks);
     Link[] links = ConvertModelLinksToDSLinks(modelLinks);
@@ -67,7 +45,7 @@ public class CompilerMessenger : MonoBehaviour
     GraphQuery.POST(CompileConstructsWithLinks);
   }
 
-  public void DisplayResult()
+  public static void DisplayResult()
   {
     Debug.Log(GraphQuery.queryReturn);
     GraphQuery.onQueryComplete -= DisplayResult;
@@ -193,6 +171,34 @@ class TestData
     Link (8, 5) (5, 5)
   ";
 
+  public static HashSet<ModelBlock> GetSampleModelBlocks()
+  {
+    var multiplyBlock = new ModelBlock(new Vector3(10, 5, 0), new HashSet<ModelComponent> { }, "multiply");
+
+    var multiplyParameter1 = new ModelComponent(ComponentType.Parameter, new Vector3(10, 7, 0), multiplyBlock, id: "p1", initializeValue: 2);
+    var multiplyParameter2 = new ModelComponent(ComponentType.Parameter, new Vector3(10, 8, 0), multiplyBlock, id: "p2", initializeValue: 3);
+    var multiplyReturn = new ModelComponent(ComponentType.Return, new Vector3(8, 5, 0), multiplyBlock);
+
+    multiplyBlock.AddComponent(multiplyParameter1);
+    multiplyBlock.AddComponent(multiplyParameter2);
+    multiplyBlock.AddComponent(multiplyReturn);
+
+
+    var originBlock = new ModelBlock(new Vector3(3, 3, 0), new HashSet<ModelComponent> { }, "hello", isOrigin: true);
+
+    var originReturn = new ModelComponent(ComponentType.Return, new Vector3(5, 5, 0), originBlock);
+
+    originBlock.AddComponent(originReturn);
+
+    return new HashSet<ModelBlock> { multiplyBlock, originBlock };
+  }
+
+  public static HashSet<ModelLink> GetSampleModelLinks()
+  {
+    var link = new ModelLink(new Vector3(5, 5, 0), new Vector3(8, 5, 0));
+
+    return new HashSet<ModelLink> { link };
+  }
   public static string GetSampleContructs()
   {
     var c2 = new Construct(
