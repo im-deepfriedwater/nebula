@@ -7,58 +7,63 @@ using UnityEngine;
 // Triggers a compilation if so.
 public class ModelEnvironment : MonoBehaviour
 {
-    public HashSet<ModelBlock> blocks = new HashSet<ModelBlock>();
-    public HashSet<ModelLink> links = new HashSet<ModelLink>();
-    public HashSet<ModelComponent> components = new HashSet<ModelComponent>();
+  public HashSet<ModelBlock> blocks = new HashSet<ModelBlock>();
+  public HashSet<ModelLink> links = new HashSet<ModelLink>();
+  public HashSet<ModelComponent> components = new HashSet<ModelComponent>();
 
-    public int BlocksLength 
-    {
-        get { return blocks.Count; }
-    }
+  public int BlocksLength
+  {
+    get { return blocks.Count; }
+  }
 
-    public int LinksLength
-    {
-        get { return links.Count;  }
-    }
+  public int LinksLength
+  {
+    get { return links.Count; }
+  }
 
-    public int ComponentsLength
-    {
-        get { return components.Count; }
-    }
+  public int ComponentsLength
+  {
+    get { return components.Count; }
+  }
 
-    public void TriggerCompliation()
-    {   
-        // TODO to slot in with server implementation.
-        throw new System.NotImplementedException();
-    }
+  public void TriggerCompliation()
+  {
+    // TODO to slot in with server implementation.
+    CompilerMessenger.SendQueryToBackend(blocks, links);
+  }
 
-    public void AddBlock(ModelBlock mb)
-    {
-        blocks.Add(mb);
-    }
+  public void DisplayCompiledOutput()
+  {
 
-    public void RemoveBlock(ModelBlock mb)
-    {
-        blocks.Remove(mb);
-    }
+  }
 
-    public void AddComponent(ModelComponent mc)
-    {
-        components.Add(mc);
-    }
+  public void AddBlock(ModelBlock mb)
+  {
+    blocks.Add(mb);
+  }
 
-    public void RemoveComponent(ModelComponent mc)
-    {
-        components.Remove(mc);
-    }
+  public void RemoveBlock(ModelBlock mb)
+  {
+    blocks.Remove(mb);
+  }
 
-    public void AddLink(ModelLink ml)
-    {
-        links.Add(ml);
-    }
+  public void AddComponent(ModelComponent mc)
+  {
+    components.Add(mc);
+  }
 
-    public void RemoveLink(ModelLink ml)
-    {
-        links.Remove(ml);
-    }
+  public void RemoveComponent(ModelComponent mc)
+  {
+    components.Remove(mc);
+  }
+
+  public void AddLink(ModelLink ml)
+  {
+    links.Add(ml);
+  }
+
+  public void RemoveLink(ModelLink ml)
+  {
+    links.Remove(ml);
+  }
 }
