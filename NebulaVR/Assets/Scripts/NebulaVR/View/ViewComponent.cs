@@ -19,6 +19,7 @@ public class ViewComponent : ViewConstruct
   public int? InitializeValue
   {
     get { return initializeValue; }
+    set { initializeValue = value; }
   }
 
   public ComponentBinding binding;
