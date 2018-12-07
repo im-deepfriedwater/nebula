@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,6 +18,7 @@ public class Binding
 
   public void PropagateChange()
   {
+    mb.Position = new Vector3(vb.Position.x, vb.Position.y, vb.Position.z);
     this.environmentChanged.Invoke();
   }
 

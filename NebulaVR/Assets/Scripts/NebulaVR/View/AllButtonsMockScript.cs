@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AllButtonsMockScript : MonoBehaviour
 {
-    public static string typed;
+    public string typed;
     public Button button_0, button_1, button_2, button_3, button_4, button_5,
            button_6, button_7, button_8, button_9, button_hello, button_clear;
 

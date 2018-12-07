@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ViewLink : MonoBehaviour {
-    Vector3 to;
-    Vector3 from;
-    LinkBinding binding;
+    public Vector3 to;
+    public Vector3 from;
+    public LinkBinding binding;
       
-    void SetTargets(Vector3 to, Vector3 from)
+    public void SetTargets(Vector3 to, Vector3 from)
     {
         this.to = to;
         this.from = from;
@@ -22,5 +22,10 @@ public class ViewLink : MonoBehaviour {
     public void Delete()
     {
         Destroy(this);
+    }
+
+    public void SignifyChange()
+    {
+        binding.PropagateChange();
     }
 }

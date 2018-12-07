@@ -10,6 +10,14 @@ public class ModelComponent : ModelConstruct
   {
     get { return componentType; }
   }
+  // Internal Value that is used to determine the starting value 
+  // for Parameters without an entering Link. Default value is null.
+  private string initializeValue;
+  public string InitializeValue
+  {
+    get { return initializeValue; }
+    set { initializeValue = value; }
+  }
   private readonly HashSet<ModelLink> links;
 
   public ModelComponent(ComponentType componentType, Vector3 position, ModelBlock parent, string id = null)
