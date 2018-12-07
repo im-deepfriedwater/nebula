@@ -22,7 +22,7 @@ public class ViewModelLayer : MonoBehaviour
 
   private void Test()
   {
-    //me.TriggerCompliation();
+    me.TriggerCompliation();
   }
 
   private void AddToModel(ModelBlock modelBlock)

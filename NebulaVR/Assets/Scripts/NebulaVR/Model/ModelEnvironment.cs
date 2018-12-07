@@ -28,8 +28,8 @@ public class ModelEnvironment : MonoBehaviour
 
   public void TriggerCompliation()
   {
-    // TODO to slot in with server implementation.
-    throw new System.NotImplementedException();
+    // // TODO to slot in with server implementation.
+    // throw new System.NotImplementedException();
     CompilerMessenger.SendQueryToBackend(blocks, links);
   }
 
