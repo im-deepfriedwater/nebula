@@ -19,13 +19,11 @@ public class ViewModelLayer : MonoBehaviour
     public void Start()
     {
         ConstructAndBindViewBlock(new Vector3(0, 0, 0), originPrefab);
-        environmentChanged.AddListener(Test);
     }
 
-    private void Test()
+    public void Test()
     {
         me.TriggerCompliation();
-        Debug.Log("Hello");
     }
 
     private void AddToModel(ModelBlock modelBlock)
@@ -80,7 +78,6 @@ public class ViewModelLayer : MonoBehaviour
         linkBindings.Add(linkBinding);
         me.AddLink(modelLink);
         viewLink.Initialize(to, from, linkBinding);
-
         return gameObjectLink;
     }
 

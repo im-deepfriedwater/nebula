@@ -18,6 +18,8 @@ public class ViewMenuBehavior : MonoBehaviour {
                   button_left, button_right;
     public Text text_0, text_1, text_2, text_3;
 
+    private Vector3 defaultSpawn = new Vector3(2, 0, 0);
+
     void Start()
     {
         page = 0;
@@ -36,7 +38,7 @@ public class ViewMenuBehavior : MonoBehaviour {
         {
             //Function 1
             Debug.Log("1");
-            vml.ConstructAndBindViewBlock(new Vector3(5, 0, 5), prefabs[0]);
+            vml.ConstructAndBindViewBlock(defaultSpawn, prefabs[0]);
         }
         if(page == 1)
         {
@@ -87,7 +89,7 @@ public class ViewMenuBehavior : MonoBehaviour {
         if (page == 1)
         {
             //Function 7
-            Debug.Log("7");
+            vml.Test();
         }
         if (page == 2)
         {
@@ -136,15 +138,15 @@ public class ViewMenuBehavior : MonoBehaviour {
         if (page == 0)
         {
             text_0.text = "Add Function";
-            text_1.text = "Function 2";
-            text_2.text = "Function 3";
-            text_3.text = "Function 4";
+            text_1.text = "Subtract Function";
+            text_2.text = "Multiply Function";
+            text_3.text = "Divide Function";
         };
         if (page == 1)
         {
-            text_0.text = "Function 5";
-            text_1.text = "I'm BenConsole";
-            text_2.text = "Function 7";
+            text_0.text = "Ternary Function";
+            text_1.text = "Open Console";
+            text_2.text = "Compile";
             text_3.text = "Function 8";
         }
         if (page == 2)

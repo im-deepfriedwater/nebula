@@ -456,7 +456,7 @@ MonoBehaviour:
   prefabDrawLink: {fileID: 1358730011843616, guid: e56bb970ed96c1a4e83f225b586b826e,
     type: 2}
   selectedHand: 0
-  vml: {fileID: 0}
+  vml: {fileID: 1454494449}
 --- !u!1 &562207099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1258,30 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1614929421153358, guid: 06fefbd614a533b4893426da9f91a5d9, type: 2}
+      propertyPath: m_Name
+      value: ConsoleText
+      objectReference: {fileID: 0}
+    - target: {fileID: 114031303351024256, guid: 06fefbd614a533b4893426da9f91a5d9,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114031303351024256, guid: 06fefbd614a533b4893426da9f91a5d9,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114031303351024256, guid: 06fefbd614a533b4893426da9f91a5d9,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114031303351024256, guid: 06fefbd614a533b4893426da9f91a5d9,
+        type: 2}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 06fefbd614a533b4893426da9f91a5d9, type: 2}
   m_IsPrefabAsset: 0
@@ -1650,7 +1674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92250fceb2588b744869c8cccdb0a21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkPrefab: {fileID: 1002368028237576, guid: 11384508720cc29488b78d8dcbfa7d31, type: 2}
+  linkPrefab: {fileID: 1358730011843616, guid: e56bb970ed96c1a4e83f225b586b826e, type: 2}
   originPrefab: {fileID: 1251618551937604, guid: 92e5b99f3978854468d6d7ba9bf5f8ed,
     type: 2}
   me: {fileID: 985443401}
@@ -2347,7 +2371,7 @@ MonoBehaviour:
   prefabDrawLink: {fileID: 1358730011843616, guid: e56bb970ed96c1a4e83f225b586b826e,
     type: 2}
   selectedHand: 1
-  vml: {fileID: 0}
+  vml: {fileID: 1454494449}
 --- !u!4 &1990426406 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 475840, guid: 2b3a4efa04a7cf2428e0835b20f15fdc,

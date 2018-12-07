@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class ViewComponent : ViewConstruct
 {
-  // Should keep track of the game object it's attached to.
-  // Has to keep track of component links and relationships.
-  // Positions in space.
-  // Perhaps also the type of component it is.
-  // Inputs and outputs.
-  ViewBlock parent;
+    // Should keep track of the game object it's attached to.
+    // Has to keep track of component links and relationships.
+    // Positions in space.
+    // Perhaps also the type of component it is.
+    // Inputs and outputs.
+    [SerializeField]
+    public string id;
+    ViewBlock parent;
   Vector3 internalPosition; // NOTE: This is relative to the parent.
   ViewLink link;
 
+
+  public int InitializeTest;
   // Internal Value that is used to determine the starting value 
   // for Parameters without an entering Link. Default value is null.
   private int? initializeValue;
@@ -31,7 +35,10 @@ public class ViewComponent : ViewConstruct
   {
     this.parent = parent;
     this.binding = binding;
-    this.initializeValue = 3;
+    this.initializeValue = null;
+    if (this.id != "") {
+        this.initializeValue = 3;
+    }
   }
 
   // Should be called by the controller when a component is moved.

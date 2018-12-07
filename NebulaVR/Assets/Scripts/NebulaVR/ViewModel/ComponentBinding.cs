@@ -18,6 +18,10 @@ public class ComponentBinding
   {
     mc.Position = new Vector3(vc.Position.x, vc.Position.y, vc.Position.z);
     mc.InitializeValue = vc.InitializeValue;
+    mc.Id = vc.id;
+    Debug.Log(mc.Id);
+    Debug.Log(vc.id);
+    Debug.Log("_______________");
     this.environmentChanged.Invoke();
   }
 

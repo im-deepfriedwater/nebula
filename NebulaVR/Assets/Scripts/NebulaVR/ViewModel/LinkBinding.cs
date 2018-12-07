@@ -16,9 +16,11 @@ public class LinkBinding {
 
     public void PropagateChange()
     {
-        ml.to = new Vector3(vl.to.x, vl.to.y, vl.to.z);
-        ml.from = new Vector3(vl.from.x, vl.from.y, vl.from.z);
-        environmentChanged.Invoke();
+        var dlb = vl.gameObject.GetComponent<DrawLinkBehaviour>();
+        var momPos = dlb.mom.transform.position;
+        var dadPos = dlb.dad.transform.position;
+        ml.to = new Vector3(momPos.x, momPos.y, momPos.z);
+        ml.from = new Vector3(dadPos.x, dadPos.y, dadPos.z);
     }
 
     public void DeleteFromViewAndModel(ModelEnvironment me)

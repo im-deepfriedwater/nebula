@@ -11,7 +11,7 @@ public class DisplayConsoleScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        currentText.text = value;
+        //currentText.text = value;
 	}
 
     void setValue(string val)

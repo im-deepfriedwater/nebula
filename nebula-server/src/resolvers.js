@@ -15,6 +15,7 @@ module.exports.resolvers = {
         JSON.parse(constructs),
         JSON.parse(links)
       );
+        console.log(program);
 
       const runProgramWithStdout = () => {
         let stdout = [];

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using SimpleJSON;
 using graphQLClient;
 
@@ -26,6 +27,8 @@ public class CompilerMessenger : MonoBehaviour
     }
   ";
 
+    public static string result;
+
   void Start()
   {
     // Test Query
@@ -48,7 +51,13 @@ public class CompilerMessenger : MonoBehaviour
   public static void DisplayResult()
   {
     Debug.Log(GraphQuery.queryReturn);
-    GraphQuery.onQueryComplete -= DisplayResult;
+
+        if (GraphQuery.queryReturn != "")
+        {
+            GameObject.Find("ConsoleText").GetComponent<UnityEngine.UI.Text>().text = GraphQuery.queryReturn;
+        }
+
+        GraphQuery.onQueryComplete -= DisplayResult;
   }
 
   void OnDisable()
@@ -74,7 +83,10 @@ public class CompilerMessenger : MonoBehaviour
         {
           childName = "Result";
         }
-        Position childPos = new Position(component.Position.x, component.Position.y, component.Position.z);
+                Debug.Log(component.InitializeValue);
+                Debug.Log(component.Id);
+
+                Position childPos = new Position(component.Position.x, component.Position.y, component.Position.z);
         ConstructInfo2 childInfo = new ConstructInfo2(false, component.Id, "number", component.InitializeValue);
         Construct child = new Construct(childName, new Construct[] { }, childPos, childInfo);
         children[childIndex++] = child;

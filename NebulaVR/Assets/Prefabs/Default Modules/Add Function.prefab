@@ -130,7 +130,7 @@ Transform:
   m_LocalScale: {x: 0.49999997, y: 0.49999997, z: 0.49999997}
   m_Children: []
   m_Father: {fileID: 4341291886346132}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4341291886346132
 Transform:
@@ -139,11 +139,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1742298070142064}
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 0.132, y: 0.17, z: 1.059}
+  m_LocalPosition: {x: 0.132, y: 8.93, z: 1.059}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
-  - {fileID: 4182310384486650}
   - {fileID: 4814927873891128}
+  - {fileID: 4182310384486650}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
@@ -160,7 +160,7 @@ Transform:
   - {fileID: 4900656718224674}
   - {fileID: 4005729929798408}
   m_Father: {fileID: 4341291886346132}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4900656718224674
 Transform:
@@ -416,6 +416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: p2
+  InitializeTest: 2
   componentType: 4
 --- !u!114 &114235213856541144
 MonoBehaviour:
@@ -503,6 +504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 
+  InitializeTest: 0
   componentType: 3
 --- !u!114 &114694069019955976
 MonoBehaviour:
@@ -516,6 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: add
+  isOrigin: 0
 --- !u!114 &114795726155395034
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -565,6 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: p1
+  InitializeTest: 3
   componentType: 4
 --- !u!136 &136643974857279340
 CapsuleCollider:

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ViewBlock : ViewConstruct
-{   
+{
     [SerializeField]
-    public readonly string id;
+    public string id;
     public Binding binding;
     public bool isOrigin;
 

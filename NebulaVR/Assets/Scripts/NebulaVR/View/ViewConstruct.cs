@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class ViewConstruct : MonoBehaviour
 {
-  [SerializeField]
-  public string id;
   public Vector3 Position
   {
     get { return gameObject.transform.position; }

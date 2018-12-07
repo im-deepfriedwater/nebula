@@ -28,8 +28,18 @@ public class ModelEnvironment : MonoBehaviour
 
   public void TriggerCompliation()
   {
+    Debug.Log("print compilation");
     // TODO to slot in with server implementation.
+    foreach (ModelLink ml in links)
+    {
+
+        Debug.Log(ml.to);
+        Debug.Log(ml.from);
+        Debug.Log("___________");
+    }
+    Debug.Log(links.Count);
     CompilerMessenger.SendQueryToBackend(blocks, links);
+    
   }
 
   public void DisplayCompiledOutput()

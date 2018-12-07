@@ -21,6 +21,7 @@ public class DrawLinkBehaviour : MonoBehaviour {
         {
             lr.SetPosition(0, mom.transform.position);
             lr.SetPosition(1, dad.transform.position);
+            gameObject.GetComponent<ViewLink>().binding.PropagateChange();
         }
     }
 

@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0978f2ce1537b4f918deb0c356ea90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 
+  id: test_origin
   isOrigin: 1
 --- !u!114 &114781084099036248
 MonoBehaviour:
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 
+  InitializeTest: 0
   componentType: 3
 --- !u!114 &114980446991011442
 MonoBehaviour:

@@ -19,6 +19,11 @@ public class Binding
   public void PropagateChange()
   {
     mb.Position = new Vector3(vb.Position.x, vb.Position.y, vb.Position.z);
+    mb.Id = vb.id;
+    foreach (ViewComponent vc in vb.gameObject.GetComponentsInChildren<ViewComponent>())
+    {
+            vc.binding.PropagateChange();
+    }
     this.environmentChanged.Invoke();
   }
 
