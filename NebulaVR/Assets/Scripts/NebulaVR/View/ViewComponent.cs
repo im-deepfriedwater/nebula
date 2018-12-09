@@ -15,11 +15,17 @@ public class ViewComponent: ViewConstruct
     public ComponentBinding binding;
     [SerializeField]
     public ComponentType componentType;
+    public int InitializedValue;
 
     public void Initialize(ViewBlock parent, ComponentBinding binding)
     {
         this.parent = parent;
         this.binding = binding;
+    }
+
+    public void SetInitialize(int value)
+    {
+        InitializedValue = value;
     }
 
     // Should be called by the controller when a component is moved.
